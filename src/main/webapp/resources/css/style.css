@@ -1,0 +1,47 @@
+body {
+	background-color: #FFF09E;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#banner {
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #FF5252;
+	border: 1px solid;
+	border-color: #FF5252;
+	height: 100px;
+	width: 85%;
+	padding: 10px;
+	height: 100px;
+}
+
+#menu {
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #FF5252;
+	border: 1px solid;
+	border-color: #FF5252;
+	height: 25px;
+	width: 85%;
+	padding: 10px;
+	height: 25px;
+}
+
+#main {
+	background-color: #FFFADB;
+	border: 1px solid;
+	border-color: #C4A700;
+	margin-left: auto;
+	margin-right: auto;
+	width: 85%;
+	padding: 10px;
+	margin-left: auto;
+}
+
+#pizzaObject {
+	border: 1px solid;
+	border-radius: 5px;
+	border-color: #fdfcf4;
+	float: left;
+	margin: 10px;
+}
