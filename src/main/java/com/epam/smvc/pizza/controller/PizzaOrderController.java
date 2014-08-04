@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.epam.smvc.pizza.service.PizzaService;
 
@@ -16,7 +15,7 @@ import com.epam.smvc.pizza.service.PizzaService;
  *
  */
 @Controller
-@SessionAttributes("")
+// @SessionAttributes("")
 public class PizzaOrderController {
 	private static final Logger LOG = LoggerFactory
 			.getLogger(PizzaOrderController.class);
@@ -24,8 +23,8 @@ public class PizzaOrderController {
 	@Autowired
 	private PizzaService service;
 
-	@RequestMapping(value = "/order", method = RequestMethod.GET)
+	@RequestMapping(value = "/pizzas", method = RequestMethod.GET)
 	public String getPizzas(final Model model) {
-		return "";
+		return "pizzas";
 	}
 }
