@@ -9,6 +9,7 @@ public class Pizza {
 	private int price;
 	private List<String> topping = new ArrayList<>();
 	private boolean isVegan;
+	private String file;
 
 	public String getName() {
 		return name;
@@ -41,5 +42,13 @@ public class Pizza {
 
 	public void setVegan(final boolean isVegan) {
 		this.isVegan = isVegan;
+	}
+
+	public String getFile() {
+		return file;
+	}
+
+	public void setFile(String file) {
+		this.file = file;
 	}
 }

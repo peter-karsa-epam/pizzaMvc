@@ -27,6 +27,21 @@ body {
 	height: 25px;
 }
 
+table {
+	width: 100%;
+	font-weight: bold;
+}
+
+td {
+	width: 25%;
+	height: 100%;
+	text-align: center;
+	border: 3px outset;
+	border-color: #f89236;
+	text-align: center;
+	text-align: center;
+}
+
 #main {
 	background-color: #FFFADB;
 	border: 1px solid;
@@ -44,4 +59,24 @@ body {
 	border-color: #fdfcf4;
 	float: left;
 	margin: 10px;
+}
+
+a:link {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ffff77;
+	text-decoration: none;
+}
+
+a:active {
+	color: #ffffff;
+	text-decoration: none;
 }

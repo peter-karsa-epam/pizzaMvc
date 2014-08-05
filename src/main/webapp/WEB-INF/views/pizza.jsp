@@ -22,5 +22,6 @@
 	<div id="main">
 		<P>The time on the server is ${serverTime}.</P>
 	</div>
+	<script type="text/javascript" src="resources/js/script.js"></script>
 </body>
 </html>
