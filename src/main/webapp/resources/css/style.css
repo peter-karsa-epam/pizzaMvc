@@ -160,3 +160,12 @@ a:active {
 	padding: 20px;
 	overflow: hidden;
 }
+
+#customerMsg {
+	border: 1px solid #ffa4a4;
+	background-color: #fff2a8;
+	padding: 10px;
+	margin: 20px;
+	overflow: hidden;
+	background-color: #fff2a8;
+}

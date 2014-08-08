@@ -7,10 +7,12 @@
 <title>Luigis' Pizza</title>
 </head>
 <body>
+
 	<div id="banner">
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
+
 		<div id="menu">
 			<table>
 				<tr>
@@ -22,17 +24,28 @@
 				</tr>
 			</table>
 		</div>
+
 	</div>
+
 	<div id="main">
+
 		<div class="postMessage">
-			<form action="" method="POST">
-				Név: <br> <input type="text" name="messageText" /> <br>
-				Üzenet szövege: <br> <input type="text" name="messageText" />
-				<br> <input type="submit" value="Elküld">
+			<form role="form" action="/smvc/addMsg" method="POST" id="newMsg">
+				Name: <br> <input type="text" name="name" /> <br>
+				Message: <br>
+				<textarea name="text" form="newMsg" rows="4" cols="50"></textarea>
+				<br>
+				<button type="submit">Send</button>
 			</form>
 		</div>
 
-
+		<c:forEach var="msg" items="${messages}">
+			<div id="customerMsg">
+				<div id="userMsg">${msg.name}</div>
+				<p>${msg.message}</p>
+				<p>(${msg.date})</p>
+			</div>
+		</c:forEach>
 	</div>
 	<script type="text/javascript" src="resources/js/script.js"></script>
 </body>
