@@ -8,22 +8,33 @@
 </head>
 <body>
 	<div id="banner">
-		<h1>Pizza here soon!</h1>
-		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png" height="150px" width="150px">
-	<div id="menu">
-		<table>
-			<tr>
-				<td><a href="/smvc" target="_self">Home</a></td>
-				<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
-				<td><a href="/smvc/message" target="_self">Message</a></td>
-				<td><a href="/smvc/contact" target="_self">Contact</a></td>
-			</tr>
-		</table>
+		<h1>Luigi's pizza</h1>
+		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
+			height="150px" width="150px">
+			
+		<div id="menu">
+			<table>
+				<tr>
+					<td><a href="/smvc" target="_self">Home</a></td>
+					<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
+					<td><a href="/smvc/message" target="_self">Message</a></td>
+					<td><a href="/smvc/contact" target="_self">Contact</a></td>
+				</tr>
+			</table>
+		</div>
 	</div>
-	</div>
+	
 	<div id="main">
-		<P>The time on the server is ${serverTime}.</P>
+	
+		<h3>Admin login:</h3>
+		<form action="" method="POST">
+			User: <br> <input type="text" name="messageText" /> <br>
+			Password: <br> <input type="password" name="messageText" /> <br>
+			<input type="submit" value="Login">
+		</form>
+
 	</div>
+	
 	<script type="text/javascript" src="resources/js/script.js"></script>
 </body>
 </html>

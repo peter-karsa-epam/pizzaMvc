@@ -8,7 +8,7 @@ public class Pizza {
 	private String name;
 	private int price;
 	private List<String> topping = new ArrayList<>();
-	private boolean isVegan;
+	//private boolean isVegan;
 	private String file;
 
 	public String getName() {
@@ -36,13 +36,13 @@ public class Pizza {
 		this.topping.addAll(topping);
 	}
 
-	public boolean isVegan() {
-		return isVegan;
-	}
-
-	public void setVegan(final boolean isVegan) {
-		this.isVegan = isVegan;
-	}
+	// public boolean isVegan() {
+	// return isVegan;
+	// }
+	//
+	// public void setVegan(final boolean isVegan) {
+	// this.isVegan = isVegan;
+	// }
 
 	public String getFile() {
 		return file;

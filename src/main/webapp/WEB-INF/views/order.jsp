@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="banner">
-		<h1>Pizza here soon!</h1>
+		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png" height="150px" width="150px">
 	<div id="menu">
 		<table>

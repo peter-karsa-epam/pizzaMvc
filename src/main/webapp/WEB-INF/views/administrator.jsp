@@ -7,11 +7,11 @@
 <title>Luigis' Pizza</title>
 </head>
 <body>
-
 	<div id="banner">
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
+
 		<div id="menu">
 			<table>
 				<tr>
@@ -19,28 +19,23 @@
 					<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
 					<td><a href="/smvc/message" target="_self">Message</a></td>
 					<td><a href="/smvc/contact" target="_self">Contact</a></td>
-					<td><a href="/smvc/admin" target="_self">Login</a></td>
 				</tr>
 			</table>
 		</div>
 	</div>
-	
+
 	<div id="main">
-	
-		<div class="pizzaItem">
-			<h4>Margherita</h4>
-			<img src="resources/pizzapic/pizza.jpg" alt="pizza" height="140"
-				width="180">
-			<h6>Topping:</h6>
-			<p>Tomato sauce, cheese</p>
-			<h6>Price: </h6><p>$2.99</p>
-			<form name="input" action="" method="get">
-				Quantity: <input type="number" name="user" size="4"> <input
-					type="submit" value="Add">
-			</form>
-		</div>
+
+		<h3>Admin login:</h3>
+		<form action="" method="POST">
+			Name: <br> <input type="text" name="messageText" /> <br>
+			Topping: <br> <input type="text" name="messageText" /> <br>
+			Price: <br> <input type="number" name="messageText" /> <br>
+			<input type="submit" value="Add product">
+		</form>
 
 	</div>
+
 	<script type="text/javascript" src="resources/js/script.js"></script>
 </body>
 </html>

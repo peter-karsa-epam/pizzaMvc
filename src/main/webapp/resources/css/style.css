@@ -46,9 +46,11 @@ img {
 }
 
 h1 {
+	color: #ffff82;
 	float: left;
 	padding: 1px;
 	margin: 1px;
+	text-shadow: 2px 2px #400040;
 }
 
 #menu {
