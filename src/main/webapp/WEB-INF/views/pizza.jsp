@@ -26,7 +26,7 @@
 	</div>
 
 	<div id="main">
-	
+
 		<c:forEach var="pizza" items="${pizzas}">
 			<div class="pizzaItem">
 				<h4>${pizza.name}</h4>
@@ -41,9 +41,9 @@
 				</form>
 			</div>
 		</c:forEach>
-		
+
 	</div>
-	
+
 	<script type="text/javascript" src="resources/js/script.js"></script>
 </body>
 </html>

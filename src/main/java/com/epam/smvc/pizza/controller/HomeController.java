@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.epam.smvc.pizza.domain.Message;
 import com.epam.smvc.pizza.domain.News;
+import com.epam.smvc.pizza.domain.Pizza;
 import com.epam.smvc.pizza.service.MessageService;
 import com.epam.smvc.pizza.service.NewsService;
 import com.epam.smvc.pizza.service.PizzaService;
@@ -122,19 +123,31 @@ public class HomeController {
 	public String addPizza(@RequestParam("name") final String name,
 			@RequestParam("toppings") final String toppings,
 			@RequestParam("price") final int price,
-			@RequestParam("image") MultipartFile picture) {
+			@RequestParam("image") MultipartFile picture, final Locale locale,
+			final Model model) {
 
 		if (!picture.isEmpty()) {
 			saveImage(name + ".jpg", picture);
+
+			Pizza pizza = new Pizza();
+			pizza.setName(name);
+			pizza.setTopping(toppings);
+			pizza.setPrice(price);
+			pizza.setFile("/pizzapic/" + name + ".jpg");
+			pizzaService.addPizza(pizza);
+
+			populateData(model);
 		} else {
 
 		}
 		return "administrator";
 	}
 
-	private void saveImage(String filename, MultipartFile image) {
+	private void saveImage(final String name, final MultipartFile image) {
 		try {
-			File file = new File("\\resources\\pizzapic\\" + filename);
+			File file = new File(
+					"d:\\pizzaMvc\\src\\main\\webapp\\resources\\pizzapic\\"
+							+ name);
 			FileUtils.writeByteArrayToFile(file, image.getBytes());
 			System.out.println("OKOK");
 		} catch (IOException ioex) {

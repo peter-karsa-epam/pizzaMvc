@@ -35,6 +35,6 @@ public class Pizza {
 	}
 
 	public void setFile(final String file) {
-		this.file = "/resources/pizzapic/" + file;
+		this.file = file;
 	}
 }
