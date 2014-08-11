@@ -23,17 +23,17 @@
 			</table>
 		</div>
 	</div>
-	
+
 	<div id="main">
-		<c:forEach var="item" items="${news}">
+		<c:forEach var="newsitem" items="${news}">
 			<div id="news">
-				<div id="newsTitle">${item.title}</div>
-				<p id="newsContent">${item.content}</p>
-				${item.dateAdded}
+				<div id="newsTitle">${newsitem.title}</div>
+				<p id="newsContent">${newsitem.content}</p>
+				<p>Added: ${newsitem.date}</p>
 			</div>
 		</c:forEach>
 	</div>
-	
+
 	<script type="text/javascript" src="resources/js/script.js"></script>
 </body>
 </html>

@@ -26,12 +26,24 @@
 
 	<div id="main">
 
-		<h3>Admin login:</h3>
-		<form action="" method="POST">
-			Name: <br> <input type="text" name="messageText" /> <br>
-			Topping: <br> <input type="text" name="messageText" /> <br>
-			Price: <br> <input type="number" name="messageText" /> <br>
-			<input type="submit" value="Add product">
+		<h3>Add pizza:</h3>
+		<form action="/smvc/addPizza" method="POST">
+			Name: <br> <input type="text" name="name" /> <br> Topping:
+			<br> <input type="text" name="toppings" /> <br> Price: <br>
+			<input type="number" name="price" /> <br> Picture: <br> <input
+				type="file" id="image" /> <br> <input type="submit"
+				value="Add product">
+		</form>
+
+	</div>
+
+	<div id="main">
+
+		<h3>Add news:</h3>
+		<form action="/smvc/addNews" method="POST">
+			Title: <br> <input type="text" name="newsTitle" /> <br>
+			Content: <br> <input type="text" name="newsContent" /> <br>
+			<input type="submit" value="Add to news">
 		</form>
 
 	</div>

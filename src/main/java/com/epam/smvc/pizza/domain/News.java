@@ -2,10 +2,10 @@ package com.epam.smvc.pizza.domain;
 
 import java.util.Date;
 
-public class News {
+public class News implements Comparable<News> {
 	private String title;
 	private String content;
-	private Date dateAdded;
+	private Date date;
 
 	public String getTitle() {
 		return title;
@@ -23,11 +23,16 @@ public class News {
 		this.content = content;
 	}
 
-	public Date getDateAdded() {
-		return dateAdded;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setDateAdded(Date dateAdded) {
-		this.dateAdded = dateAdded;
+	public void setDateAdded(final Date date) {
+		this.date = date;
+	}
+
+	@Override
+	public int compareTo(final News o) {
+		return this.getDate().compareTo(o.getDate());
 	}
 }
