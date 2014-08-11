@@ -27,11 +27,12 @@
 	<div id="main">
 
 		<h3>Add pizza:</h3>
-		<form action="/smvc/addPizza" method="POST">
+		<form action="/smvc/addPizza" method="POST"
+			enctype="multipart/form-data">
 			Name: <br> <input type="text" name="name" /> <br> Topping:
 			<br> <input type="text" name="toppings" /> <br> Price: <br>
 			<input type="number" name="price" /> <br> Picture: <br> <input
-				type="file" id="image" /> <br> <input type="submit"
+				type="file" name="image" /> <br> <input type="submit"
 				value="Add product">
 		</form>
 
