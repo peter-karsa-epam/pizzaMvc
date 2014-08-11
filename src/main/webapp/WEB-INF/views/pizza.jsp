@@ -24,23 +24,26 @@
 			</table>
 		</div>
 	</div>
-	
+
 	<div id="main">
 	
-		<div class="pizzaItem">
-			<h4>Margherita</h4>
-			<img src="resources/pizzapic/pizza.jpg" alt="pizza" height="140"
-				width="180">
-			<h6>Topping:</h6>
-			<p>Tomato sauce, cheese</p>
-			<h6>Price: </h6><p>$2.99</p>
-			<form name="input" action="" method="get">
-				Quantity: <input type="number" name="user" size="4"> <input
-					type="submit" value="Add">
-			</form>
-		</div>
-
+		<c:forEach var="pizza" items="${pizzas}">
+			<div class="pizzaItem">
+				<h4>${pizza.name}</h4>
+				<img src="${pizza.file}" alt="pizza" height="140" width="180">
+				<h6>Topping:</h6>
+				<p>${pizza.topping}</p>
+				<h6>Price:</h6>
+				<p>£ ${pizza.price}</p>
+				<form name="input" action="" method="get">
+					Quantity: <input type="number" name="user" size="4"> <input
+						type="submit" value="Add">
+				</form>
+			</div>
+		</c:forEach>
+		
 	</div>
+	
 	<script type="text/javascript" src="resources/js/script.js"></script>
 </body>
 </html>

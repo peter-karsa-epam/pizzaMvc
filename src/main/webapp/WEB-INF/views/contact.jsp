@@ -9,22 +9,30 @@
 <body>
 	<div id="banner">
 		<h1>Luigi's pizza</h1>
-		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png" height="150px" width="150px">
-	<div id="menu">
-		<table>
-			<tr>
-				<td><a href="/smvc" target="_self">Home</a></td>
-				<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
-				<td><a href="/smvc/message" target="_self">Message</a></td>
-				<td><a href="/smvc/contact" target="_self">Contact</a></td>
-				<td><a href="/smvc/admin" target="_self">Login</a></td>
-			</tr>
-		</table>
+		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
+			height="150px" width="150px">
+		<div id="menu">
+			<table>
+				<tr>
+					<td><a href="/smvc" target="_self">Home</a></td>
+					<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
+					<td><a href="/smvc/message" target="_self">Message</a></td>
+					<td><a href="/smvc/contact" target="_self">Contact</a></td>
+					<td><a href="/smvc/admin" target="_self">Login</a></td>
+				</tr>
+			</table>
+		</div>
 	</div>
-	</div>
+
 	<div id="main">
-		<P>The time on the server is ${serverTime}.</P>
+		<h4>Luigi's pizza ltd.</h4>
+		<div id="firmDetails">
+			<p>Address: Beaufort St Bristol, City of Bristol BS5 0SQ, UK</p>
+			<P>Open: every day from 10h-22h</P>
+			<p>Founded: 1999</p>
+		</div>
 	</div>
+
 	<script type="text/javascript" src="resources/js/script.js"></script>
 </body>
 </html>

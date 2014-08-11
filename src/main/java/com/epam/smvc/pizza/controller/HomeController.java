@@ -35,25 +35,17 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		// logger.info("Welcome home! The client locale is {}.", locale);
-		// Date date = new Date();
-		// DateFormat dateFormat =
-		// DateFormat.getDateTimeInstance(DateFormat.LONG,
-		// DateFormat.LONG, locale);
-		// String formattedDate = dateFormat.format(date);
-		// model.addAttribute("serverTime", formattedDate);
-
+	public String home(final Locale locale, final Model model) {
 		return "home";
 	}
 
 	@RequestMapping(value = "/pizza", method = RequestMethod.GET)
-	public String pizza(Locale locale, Model model) {
+	public String pizza(final Locale locale, final Model model) {
 		return "pizza";
 	}
 
 	@RequestMapping(value = "/message", method = RequestMethod.GET)
-	public String message(Locale locale, Model model) {
+	public String message(final Locale locale, final Model model) {
 		populateData(model);
 		return "message";
 	}
@@ -76,27 +68,34 @@ public class HomeController {
 		return "message";
 	}
 
-	private void populateData(Model model) {
-		model.addAttribute("messages", msgService.getRepository());
-	}
-
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
-	public String contact(Locale locale, Model model) {
+	public String contact(final Locale locale, final Model model) {
 		return "contact";
 	}
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String admin(Locale locale, Model model) {
+	public String admin(final Locale locale, final Model model) {
 		return "admin";
 	}
 
 	@RequestMapping(value = "/administrator", method = RequestMethod.GET)
-	public String administrator(Locale locale, Model model) {
+	public String administrator(final Locale locale, final Model model) {
 		return "administrator";
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.POST)
-	public String login() {
+	@RequestMapping(value = "/administratorLogin", method = RequestMethod.POST)
+	public String login(final Locale locale, final Model model) {
 		return "administrator";
+	}
+
+	@RequestMapping(value = "/addPizza", method = RequestMethod.POST)
+	public String addPizza(final Locale locale, final Model model) {
+		return "administrator";
+	}
+
+	private void populateData(Model model) {
+		model.addAttribute("messages", msgService.getRepository());
+		model.addAttribute("pizzas", pizzaService.getRepository());
+		model.addAttribute("news", newsService.getRepository());
 	}
 }

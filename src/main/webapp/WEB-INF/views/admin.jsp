@@ -27,7 +27,7 @@
 	<div id="main">
 	
 		<h3>Admin login:</h3>
-		<form action="" method="POST">
+		<form action="/smvc/administratorLogin" method="POST">
 			User: <br> <input type="text" name="messageText" /> <br>
 			Password: <br> <input type="password" name="messageText" /> <br>
 			<input type="submit" value="Login">

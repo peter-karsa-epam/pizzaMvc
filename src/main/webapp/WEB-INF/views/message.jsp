@@ -46,7 +46,9 @@
 				<p>(${msg.date})</p>
 			</div>
 		</c:forEach>
+
 	</div>
+
 	<script type="text/javascript" src="resources/js/script.js"></script>
 </body>
 </html>
