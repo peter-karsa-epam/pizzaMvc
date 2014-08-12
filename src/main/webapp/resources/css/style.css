@@ -140,14 +140,14 @@ a:active {
 
 #news {
 	margin: 15px;
-	border: 1px solid #ffa4a4;
+	/* 	border: 1px solid #ffa4a4; */
 	background-color: #FFF09E;
 	overflow: hidden;
 }
 
 #newsTitle {
 	background-color: #ffeb77;
-	border-bottom: 1px solid #ffa4a4;
+	border-bottom: 1px solid #f4d000;
 	padding: 3px;
 	overflow: hidden;
 }
