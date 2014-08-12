@@ -28,6 +28,11 @@
 		<h4>Luigi's pizza ltd.</h4>
 		<div id="firmDetails">
 			<p>Address: Beaufort St Bristol, City of Bristol BS5 0SQ, UK</p>
+			<p>Tel.: +004401100101010111</p>
+			<p>
+				Email: <a href="mailto:pizza@luigi.co.uk" target="_top"
+					id="mailLink">pizza@luigi.co.uk</a>
+			</p>
 			<P>Open: every day from 10h-22h</P>
 			<p>Founded: 1999</p>
 		</div>

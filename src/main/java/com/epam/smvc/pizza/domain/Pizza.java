@@ -2,9 +2,19 @@ package com.epam.smvc.pizza.domain;
 
 public class Pizza {
 	private String name;
-	private int price;
+	private double price;
 	private String topping;
 	private String file;
+
+	public Pizza() {
+	}
+
+	public Pizza(String name, double price, String topping, String file) {
+		this.name = name;
+		this.price = price;
+		this.topping = topping;
+		this.file = file;
+	}
 
 	public String getName() {
 		return name;
@@ -14,11 +24,11 @@ public class Pizza {
 		this.name = name;
 	}
 
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(final int price) {
+	public void setPrice(final double price) {
 		this.price = price;
 	}
 

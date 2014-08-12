@@ -122,7 +122,7 @@ public class HomeController {
 	@RequestMapping(value = "/addPizza", method = RequestMethod.POST)
 	public String addPizza(@RequestParam("name") final String name,
 			@RequestParam("toppings") final String toppings,
-			@RequestParam("price") final int price,
+			@RequestParam("price") final double price,
 			@RequestParam("image") MultipartFile picture, final Locale locale,
 			final Model model) {
 
@@ -133,7 +133,7 @@ public class HomeController {
 			pizza.setName(name);
 			pizza.setTopping(toppings);
 			pizza.setPrice(price);
-			pizza.setFile("/pizzapic/" + name + ".jpg");
+			pizza.setFile("resources/pizzapic/" + name + ".jpg");
 			pizzaService.addPizza(pizza);
 
 			populateData(model);

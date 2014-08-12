@@ -31,8 +31,8 @@
 			enctype="multipart/form-data">
 			Name: <br> <input type="text" name="name" /> <br> Topping:
 			<br> <input type="text" name="toppings" /> <br> Price: <br>
-			<input type="number" name="price" /> <br> Picture: <br> <input
-				type="file" name="image" /> <br> <input type="submit"
+			<input type="number" name="price" step="any" /> <br> Picture: <br>
+			<input type="file" name="image" /> <br> <input type="submit"
 				value="Add product">
 		</form>
 
@@ -41,10 +41,11 @@
 	<div id="main">
 
 		<h3>Add news:</h3>
-		<form action="/smvc/addNews" method="POST">
+		<form action="/smvc/addNews" method="POST" id="addNewsForm">
 			Title: <br> <input type="text" name="newsTitle" /> <br>
-			Content: <br> <input type="text" name="newsContent" /> <br>
-			<input type="submit" value="Add to news">
+			Content: <br>
+			<textarea name="newsContent" form="addNewsForm" rows="4" cols="50"></textarea>
+			<br> <input type="submit" value="Add to news">
 		</form>
 
 	</div>

@@ -175,3 +175,8 @@ a:active {
 	margin: 15px;
 	background-color: #fff;
 }
+
+#mailLink {
+	text-decoration: underline;
+	color: #800000;
+}
