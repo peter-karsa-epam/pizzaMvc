@@ -12,6 +12,14 @@ import com.epam.smvc.pizza.domain.User;
 public class UserRepository {
 	private List<User> users = new ArrayList<>();
 
+	public UserRepository() {
+		User user = new User();
+		user.setUser("joe");
+		user.setPassword("12345");
+		user.setAdmin(true);
+		users.add(user);
+	}
+
 	public List<User> getUsers() {
 		return Collections.unmodifiableList(users);
 	}

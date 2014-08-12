@@ -19,9 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.epam.smvc.pizza.domain.Message;
 import com.epam.smvc.pizza.domain.News;
 import com.epam.smvc.pizza.domain.Pizza;
+import com.epam.smvc.pizza.domain.User;
 import com.epam.smvc.pizza.service.MessageService;
 import com.epam.smvc.pizza.service.NewsService;
 import com.epam.smvc.pizza.service.PizzaService;
+import com.epam.smvc.pizza.service.UserService;
 
 /**
  * Handles requests for the application home page.
@@ -36,6 +38,8 @@ public class HomeController {
 	private PizzaService pizzaService;
 	@Autowired
 	private NewsService newsService;
+	@Autowired
+	private UserService userService;
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -88,16 +92,24 @@ public class HomeController {
 		return "admin";
 	}
 
-	@RequestMapping(value = "/administrator", method = RequestMethod.GET)
-	public String administrator(final Locale locale, final Model model) {
-		populateData(model);
-		return "administrator";
-	}
-
 	@RequestMapping(value = "/administratorLogin", method = RequestMethod.POST)
-	public String login(final Locale locale, final Model model) {
+	public String login(
+			@RequestParam(value = "user", required = false) final String user,
+			@RequestParam(value = "password", required = false) final String password,
+			final Locale locale, final Model model) {
+		String ret = "admin";
+		for (User curr : userService.getRepository()) {
+			if (curr.isAdmin()) {
+				if (user.equals(curr.getUser())
+						&& password.equals(curr.getPassword())) {
+					ret = "administrator";
+					break;
+				}
+			}
+		}
+
 		populateData(model);
-		return "administrator";
+		return ret;
 	}
 
 	@RequestMapping(value = "/addNews", method = RequestMethod.POST)
