@@ -26,7 +26,7 @@
 
 	<div id="main">
 
-		<h3>Add pizza:</h3>
+		<h3>Add pizza to productlist</h3>
 		<form action="/smvc/addPizza" method="POST"
 			enctype="multipart/form-data">
 			Name: <br> <input type="text" name="name" /> <br> Topping:
@@ -40,7 +40,7 @@
 
 	<div id="main">
 
-		<h3>Add news:</h3>
+		<h3>Add news to homepage</h3>
 		<form action="/smvc/addNews" method="POST" id="addNewsForm">
 			Title: <br> <input type="text" name="newsTitle" /> <br>
 			Content: <br>

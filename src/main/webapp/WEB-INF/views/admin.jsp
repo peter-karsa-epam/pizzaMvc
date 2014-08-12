@@ -11,7 +11,7 @@
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
-			
+
 		<div id="menu">
 			<table>
 				<tr>
@@ -23,18 +23,18 @@
 			</table>
 		</div>
 	</div>
-	
-	<div id="main">
-	
-		<h3>Admin login:</h3>
-		<form action="/smvc/administratorLogin" method="POST">
-			User: <br> <input type="text" name="user" /> <br>
-			Password: <br> <input type="password" name="password" /> <br>
-			<input type="submit" value="Login">
-		</form>
 
+	<div id="main">
+		<h3>Admin login:</h3>
+		<div id="loginForm">
+			<form action="/smvc/administratorLogin" method="POST">
+				User: <br> <input type="text" name="user" id="loginUser"/> <br>
+				Password: <br> <input type="password" name="password" id="loginPw"
+					/> <br> <input type="submit" value="Login">
+			</form>
+		</div>
 	</div>
-	
+
 	<script type="text/javascript" src="resources/js/script.js"></script>
 </body>
 </html>

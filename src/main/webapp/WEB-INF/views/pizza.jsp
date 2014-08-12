@@ -36,8 +36,8 @@
 				<h6>Price:</h6>
 				<p>£ ${pizza.price}</p>
 				<form name="input" action="" method="get">
-					Quantity: <input type="number" name="user" size="4"> <input
-						type="submit" value="Add">
+					Quantity: <input type="number" name="user" size="4" value="0">
+					<input type="submit" value="Add" onclick="">
 				</form>
 			</div>
 		</c:forEach>

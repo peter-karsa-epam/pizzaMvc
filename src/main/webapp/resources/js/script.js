@@ -4,3 +4,6 @@ function timeFunc() {
 	document.getElementById().innerHTML = new Date();
 }
 
+function addPizzaToBAsket() {
+	
+}
