@@ -1,6 +1,7 @@
 package com.epam.smvc.pizza.domain;
 
 public class Pizza {
+	private int id;
 	private String name;
 	private double price;
 	private String topping;
@@ -9,7 +10,8 @@ public class Pizza {
 	public Pizza() {
 	}
 
-	public Pizza(String name, double price, String topping, String file) {
+	public Pizza(int id, String name, double price, String topping, String file) {
+		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.topping = topping;
@@ -46,5 +48,13 @@ public class Pizza {
 
 	public void setFile(final String file) {
 		this.file = file;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(final int id) {
+		this.id = id;
 	}
 }

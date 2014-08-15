@@ -20,4 +20,14 @@ public class PizzaService {
 	public List<Pizza> getRepository() {
 		return repository.getPizzas();
 	}
+
+	public int getMaxId() {
+		int max = 0;
+		for (Pizza pizza : repository.getPizzas()) {
+			if (pizza.getId() > max) {
+				max = pizza.getId();
+			}
+		}
+		return max;
+	}
 }

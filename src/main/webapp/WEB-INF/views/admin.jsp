@@ -7,12 +7,12 @@
 <title>Luigis' Pizza</title>
 </head>
 <body>
-	<div id="banner">
+	<div class="banner">
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
 
-		<div id="menu">
+		<div class="menu">
 			<table>
 				<tr>
 					<td><a href="/smvc" target="_self">Home</a></td>
@@ -24,9 +24,9 @@
 		</div>
 	</div>
 
-	<div id="main">
+	<div class="main">
 		<h3>Admin login:</h3>
-		<div id="loginForm">
+		<div class="loginForm">
 			<form action="/smvc/administratorLogin" method="POST">
 				User: <br> <input type="text" name="user" id="loginUser"/> <br>
 				Password: <br> <input type="password" name="password" id="loginPw"

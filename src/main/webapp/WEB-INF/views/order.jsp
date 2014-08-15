@@ -26,7 +26,9 @@
 	</div>
 
 	<div id="main">
-
+		
+		
+		
 	</div>
 
 	<script type="text/javascript" src="resources/js/script.js"></script>

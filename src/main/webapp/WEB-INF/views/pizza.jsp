@@ -8,11 +8,11 @@
 </head>
 <body>
 
-	<div id="banner">
+	<div class="banner">
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
-		<div id="menu">
+		<div class="menu">
 			<table>
 				<tr>
 					<td><a href="/smvc" target="_self">Home</a></td>
@@ -25,19 +25,21 @@
 		</div>
 	</div>
 
-	<div id="main">
+	<div class="main">
 
 		<c:forEach var="pizza" items="${pizzas}">
-			<div class="pizzaItem">
+			<div class="pizzaItem" id="${pizza.id}">
 				<h4>${pizza.name}</h4>
 				<img src="${pizza.file}" alt="pizza" height="140" width="180">
 				<h6>Topping:</h6>
 				<p>${pizza.topping}</p>
 				<h6>Price:</h6>
 				<p>£ ${pizza.price}</p>
-				<form name="input" action="" method="get">
+				<form id="${pizza.id}" name="input" onsubmit="addPizza(this)" method="get">
 					Quantity: <input type="number" name="user" size="4" value="0">
-					<input type="submit" value="Add" onclick="">
+					<input type="text" name="user" size="4" value="${pizza.name}" hidden="true">
+					<input type="number" name="user" size="4" value="${pizza.price}" hidden="true">
+					<input type="submit" value="Add">
 				</form>
 			</div>
 		</c:forEach>

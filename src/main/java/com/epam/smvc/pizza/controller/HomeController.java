@@ -67,12 +67,13 @@ public class HomeController {
 			@RequestParam(value = "name", required = false) final String name,
 			@RequestParam(value = "text", required = false) final String text,
 			final Locale locale, final Model model) {
-		Message msg = new Message();
-		msg.setName(name);
-		msg.setDate(new Date());
-		msg.setMessage(text);
-		msgService.addRepository(msg);
-
+		if (!name.isEmpty() && !text.isEmpty()) {
+			Message msg = new Message();
+			msg.setName(name);
+			msg.setDate(new Date());
+			msg.setMessage(text);
+			msgService.addRepository(msg);
+		}
 		logger.info(name);
 		logger.info(text);
 
@@ -117,16 +118,17 @@ public class HomeController {
 			@RequestParam(value = "newsTitle", required = false) final String title,
 			@RequestParam(value = "newsContent", required = false) final String text,
 			final Locale locale, final Model model) {
-		News news = new News();
-		news.setTitle(title);
-		news.setContent(text);
-		news.setDateAdded(new Date());
-		newsService.addRepository(news);
 
-		logger.info(title);
-		logger.info(text);
-
-		model.addAttribute("newss", newsService.getRepository());
+		if (!title.isEmpty() && !text.isEmpty()) {
+			News news = new News();
+			news.setTitle(title);
+			news.setContent(text);
+			news.setDateAdded(new Date());
+			newsService.addRepository(news);
+			logger.info(title);
+			logger.info(text);
+			model.addAttribute("newss", newsService.getRepository());
+		}
 		populateData(model);
 		return "administrator";
 	}
@@ -138,10 +140,12 @@ public class HomeController {
 			@RequestParam("image") MultipartFile picture, final Locale locale,
 			final Model model) {
 
-		if (!picture.isEmpty()) {
+		if (!picture.isEmpty() && !toppings.isEmpty() && price != 0
+				&& !name.isEmpty()) {
 			saveImage(name + ".jpg", picture);
 
 			Pizza pizza = new Pizza();
+			pizza.setId(getNewId());
 			pizza.setName(name);
 			pizza.setTopping(toppings);
 			pizza.setPrice(price);
@@ -153,6 +157,10 @@ public class HomeController {
 
 		}
 		return "administrator";
+	}
+
+	private int getNewId() {
+		return 1 + pizzaService.getMaxId();
 	}
 
 	private void saveImage(final String name, final MultipartFile image) {

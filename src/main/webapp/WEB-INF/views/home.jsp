@@ -7,11 +7,11 @@
 <title>Luigis' Pizza</title>
 </head>
 <body>
-	<div id="banner">
+	<div class="banner">
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
-		<div id="menu">
+		<div class="menu">
 			<table>
 				<tr>
 					<td><a href="/smvc" target="_self">Home</a></td>
@@ -24,10 +24,10 @@
 		</div>
 	</div>
 
-	<div id="main">
+	<div class="main">
 		<c:forEach var="newsitem" items="${news}">
-			<div id="news">
-				<div id="newsTitle">${newsitem.title}</div>
+			<div class="news">
+				<div class="newsTitle">${newsitem.title}</div>
 				<p id="newsContent">${newsitem.content}</p>
 				<p>Added: ${newsitem.date}</p>
 			</div>

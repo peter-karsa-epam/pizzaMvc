@@ -13,15 +13,18 @@ public class PizzaRepository {
 	private List<Pizza> pizzas = new ArrayList<>();
 
 	public PizzaRepository() {
-		pizzas.add(new Pizza("Margherita", 1.99, "Tomato sauce, cheese",
+		pizzas.add(new Pizza(1, "Margherita", 1.99, "Tomato sauce, cheese",
 				"resources/pizzapic/Margherita.jpg"));
-		pizzas.add(new Pizza("Vegan", 5.99, "Vegetables, cheese",
+		pizzas.add(new Pizza(2, "Vegan", 5.99, "Vegetables, cheese",
 				"resources/pizzapic/Vegan.jpg"));
-		pizzas.add(new Pizza("Hawaii", 2.99, "Tomato sauce, ham, pineapple, cheese",
+		pizzas.add(new Pizza(3, "Hawaii", 2.99,
+				"Tomato sauce, ham, pineapple, cheese",
 				"resources/pizzapic/Hawaii.jpg"));
-		pizzas.add(new Pizza("Meaty", 5.99, "Tomato sauce, ham, salami, bacon, cheese",
+		pizzas.add(new Pizza(4, "Meaty", 5.99,
+				"Tomato sauce, ham, salami, bacon, cheese",
 				"resources/pizzapic/Meaty.jpg"));
-		pizzas.add(new Pizza("San francisco", 2.99, "Tomato sauce, salami, cheese",
+		pizzas.add(new Pizza(5, "San francisco", 2.99,
+				"Tomato sauce, salami, cheese",
 				"resources/pizzapic/Sanfrancisco.jpg"));
 	}
 

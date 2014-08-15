@@ -8,12 +8,12 @@
 </head>
 <body>
 
-	<div id="banner">
+	<div class="banner">
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
 
-		<div id="menu">
+		<div class="menu">
 			<table>
 				<tr>
 					<td><a href="/smvc" target="_self">Home</a></td>
@@ -27,7 +27,7 @@
 
 	</div>
 
-	<div id="main">
+	<div class="main">
 
 		<div class="postMessage">
 			<form role="form" action="/smvc/addMsg" method="POST" id="newMsg">
@@ -40,8 +40,8 @@
 		</div>
 
 		<c:forEach var="msg" items="${messages}">
-			<div id="customerMsg">
-				<div id="userMsg">${msg.name}</div>
+			<div class="customerMsg">
+				<div class="userMsg">${msg.name}</div>
 				<p>${msg.message}</p>
 				<p>(${msg.date})</p>
 			</div>

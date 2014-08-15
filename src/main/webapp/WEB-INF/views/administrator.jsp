@@ -7,12 +7,12 @@
 <title>Luigis' Pizza</title>
 </head>
 <body>
-	<div id="banner">
+	<div class="banner">
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
 
-		<div id="menu">
+		<div class="menu">
 			<table>
 				<tr>
 					<td><a href="/smvc" target="_self">Home</a></td>
@@ -24,7 +24,7 @@
 		</div>
 	</div>
 
-	<div id="main">
+	<div class="main">
 
 		<h3>Add pizza to productlist</h3>
 		<form action="/smvc/addPizza" method="POST"
@@ -38,7 +38,7 @@
 
 	</div>
 
-	<div id="main">
+	<div class="main">
 
 		<h3>Add news to homepage</h3>
 		<form action="/smvc/addNews" method="POST" id="addNewsForm">

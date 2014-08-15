@@ -7,11 +7,11 @@
 <title>Luigis' Pizza</title>
 </head>
 <body>
-	<div id="banner">
+	<div class="banner">
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
-		<div id="menu">
+		<div class="menu">
 			<table>
 				<tr>
 					<td><a href="/smvc" target="_self">Home</a></td>
@@ -24,9 +24,9 @@
 		</div>
 	</div>
 
-	<div id="main">
+	<div class="main">
 		<h4>Luigi's pizza ltd.</h4>
-		<div id="firmDetails">
+		<div class="firmDetails">
 			<p>Address: Beaufort St Bristol, City of Bristol BS5 0SQ, UK</p>
 			<p>Tel.: +004401100101010111</p>
 			<p>

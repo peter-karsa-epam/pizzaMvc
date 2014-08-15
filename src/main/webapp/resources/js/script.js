@@ -4,6 +4,7 @@ function timeFunc() {
 	document.getElementById().innerHTML = new Date();
 }
 
-function addPizzaToBAsket() {
-	
+function addPizza(f) {
+	alert(f.elements[0].value + " amount \n" + f.elements[1].value + " name \n £'"
+			+ f.elements[2].value*f.elements[0].value + " price \n" );
 }
