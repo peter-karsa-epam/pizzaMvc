@@ -12,6 +12,7 @@ import com.epam.smvc.pizza.domain.Pizza;
 public class PizzaRepository {
 	private List<Pizza> pizzas = new ArrayList<>();
 
+	//just for test
 	public PizzaRepository() {
 		pizzas.add(new Pizza(1, "Margherita", 1.99, "Tomato sauce, cheese",
 				"resources/pizzapic/Margherita.jpg"));

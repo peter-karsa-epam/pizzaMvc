@@ -29,9 +29,9 @@ import com.epam.smvc.pizza.service.UserService;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class PageController {
 	private static final Logger logger = LoggerFactory
-			.getLogger(HomeController.class);
+			.getLogger(PageController.class);
 	@Autowired
 	private MessageService msgService;
 	@Autowired
