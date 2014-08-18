@@ -19,10 +19,15 @@
 					<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
 					<td><a href="/smvc/message" target="_self">Message</a></td>
 					<td><a href="/smvc/contact" target="_self">Contact</a></td>
-					<td><a href="/smvc/admin" target="_self">Login</a></td>
 				</tr>
 			</table>
 		</div>
+
+		<div class="login">
+			[ <a href="/smvc/login" target="_self" id="loginLink">Login</a>
+			]
+		</div>
+
 	</div>
 
 	<div class="main">
@@ -35,11 +40,13 @@
 				<p>${pizza.topping}</p>
 				<h6>Price:</h6>
 				<p>£ ${pizza.price}</p>
-				<form id="${pizza.id}" name="input" onsubmit="addPizza(this)" method="get">
+				<form id="${pizza.id}" name="input" onsubmit="addPizza(this)"
+					method="get">
 					Quantity: <input type="number" name="user" size="4" value="0">
-					<input type="text" name="user" size="4" value="${pizza.name}" hidden="true">
-					<input type="number" name="user" size="4" value="${pizza.price}" hidden="true">
-					<input type="submit" value="Add">
+					<input type="text" name="user" size="4" value="${pizza.name}"
+						hidden="true"> <input type="number" name="user" size="4"
+						value="${pizza.price}" hidden="true"> <input type="submit"
+						value="Add">
 				</form>
 			</div>
 		</c:forEach>

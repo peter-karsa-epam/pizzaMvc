@@ -78,7 +78,7 @@ public class PageController {
 		logger.info(text);
 
 		populateData(model);
-		return "message";
+		return "redirect:/message";
 	}
 
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
@@ -87,18 +87,18 @@ public class PageController {
 		return "contact";
 	}
 
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String admin(final Locale locale, final Model model) {
 		populateData(model);
-		return "admin";
+		return "login";
 	}
 
-	@RequestMapping(value = "/administratorLogin", method = RequestMethod.POST)
+	@RequestMapping(value = "/loginToPizza", method = RequestMethod.POST)
 	public String login(
 			@RequestParam(value = "user", required = false) final String user,
 			@RequestParam(value = "password", required = false) final String password,
 			final Locale locale, final Model model) {
-		String ret = "admin";
+		String ret = "redirect:/admin";
 		for (User curr : userService.getRepository()) {
 			if (curr.isAdmin()) {
 				if (user.equals(curr.getUser())
@@ -154,7 +154,7 @@ public class PageController {
 
 			populateData(model);
 		} else {
-
+			
 		}
 		return "administrator";
 	}

@@ -18,10 +18,14 @@
 					<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
 					<td><a href="/smvc/message" target="_self">Message</a></td>
 					<td><a href="/smvc/contact" target="_self">Contact</a></td>
-					<td><a href="/smvc/admin" target="_self">Login</a></td>
 				</tr>
 			</table>
 		</div>
+
+		<div class="login">
+			[ <a href="/smvc/login" target="_self" id="loginLink">Login</a> ]
+		</div>
+
 	</div>
 
 	<div class="main">

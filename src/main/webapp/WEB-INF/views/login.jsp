@@ -27,10 +27,10 @@
 	<div class="main">
 		<h3>Admin login:</h3>
 		<div class="loginForm">
-			<form action="/smvc/administratorLogin" method="POST">
-				User: <br> <input type="text" name="user" id="loginUser"/> <br>
-				Password: <br> <input type="password" name="password" id="loginPw"
-					/> <br> <input type="submit" value="Login">
+			<form action="/smvc/auth" method="POST">
+				User: <br> <input type="text" name="user" id="loginUser" /> <br>
+				Password: <br> <input type="password" name="password"
+					id="loginPw" /> <br> <input type="submit" value="Login">
 			</form>
 		</div>
 	</div>
