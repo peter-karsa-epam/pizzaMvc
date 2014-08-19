@@ -65,10 +65,27 @@ public class MainController {
 		return "contact";
 	}
 
+	// @RequestMapping(value = "/login", method = RequestMethod.GET)
+	// public String admin(final Locale locale, final Model model) {
+	// populateData(model);
+	// return "login";
+	// }
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String admin(final Locale locale, final Model model) {
-		populateData(model);
-		return "login";
+	public String login(
+			@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout,
+			final Locale locale, final Model model) {
+
+		if (error != null) {
+			model.addAttribute("error", "Invalid username and password!");
+		}
+
+		if (logout != null) {
+			model.addAttribute("msg", "You've been logged out successfully.");
+		}
+
+		return "administrator";
 	}
 
 	@RequestMapping(value = "/addMsg", method = RequestMethod.POST)
@@ -91,7 +108,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/loginToPizza", method = RequestMethod.POST)
-	public String login(
+	public String loginA(
 			@RequestParam(value = "user", required = false) final String user,
 			@RequestParam(value = "password", required = false) final String password,
 			final Locale locale, final Model model) {

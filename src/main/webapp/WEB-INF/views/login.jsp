@@ -6,7 +6,7 @@
 <script type="text/javascript" src="resources/js/sessionvars.js"></script>
 <title>Luigis' Pizza</title>
 </head>
-<body>
+<body onload='document.loginForm.username.focus();'>
 	<div class="banner">
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
@@ -25,12 +25,24 @@
 	</div>
 
 	<div class="main">
-		<h3>Admin login:</h3>
+		<h3>Login:</h3>
 		<div class="loginForm">
-			<form action="/smvc/auth" method="POST">
-				User: <br> <input type="text" name="user" id="loginUser" /> <br>
-				Password: <br> <input type="password" name="password"
+
+			<c:if test="${not empty error}">
+				<div class="error">${error}</div>
+			</c:if>
+
+			<c:if test="${not empty msg}">
+				<div class="msg">${msg}</div>
+			</c:if>
+
+			<form name="loginForm"
+				action="<c:url value='j_spring_security_check' />" method="POST">
+				User: <br> <input type="text" name="username" id="loginUser" />
+				<br> Password: <br> <input type="password" name="password"
 					id="loginPw" /> <br> <input type="submit" value="Login">
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
 			</form>
 		</div>
 	</div>

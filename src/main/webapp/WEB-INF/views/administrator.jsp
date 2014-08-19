@@ -23,6 +23,22 @@
 		<!-- 			</table> -->
 		<!-- 		</div> -->
 
+		<div class="login">
+
+			<c:url value="/j_spring_security_logout" var="logoutUrl" />
+
+			<c:if test="${pageContext.request.userPrincipal.name != null}">
+				<h2>
+					[ <a href="javascript:formSubmit()">Logout</a> ]
+				</h2>
+			</c:if>
+
+			<form action="${logoutUrl}" method="post" id="logoutForm">
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
+			</form>
+		</div>
+
 	</div>
 
 	<div class="main">
