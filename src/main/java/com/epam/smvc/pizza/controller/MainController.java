@@ -29,9 +29,9 @@ import com.epam.smvc.pizza.service.UserService;
  * Handles requests for the application home page.
  */
 @Controller
-public class PageController {
+public class MainController {
 	private static final Logger logger = LoggerFactory
-			.getLogger(PageController.class);
+			.getLogger(MainController.class);
 	@Autowired
 	private MessageService msgService;
 	@Autowired
@@ -41,9 +41,6 @@ public class PageController {
 	@Autowired
 	private UserService userService;
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(final Locale locale, final Model model) {
 		populateData(model);
@@ -60,6 +57,18 @@ public class PageController {
 	public String message(final Locale locale, final Model model) {
 		populateData(model);
 		return "message";
+	}
+
+	@RequestMapping(value = "/contact", method = RequestMethod.GET)
+	public String contact(final Locale locale, final Model model) {
+		populateData(model);
+		return "contact";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String admin(final Locale locale, final Model model) {
+		populateData(model);
+		return "login";
 	}
 
 	@RequestMapping(value = "/addMsg", method = RequestMethod.POST)
@@ -79,18 +88,6 @@ public class PageController {
 
 		populateData(model);
 		return "redirect:/message";
-	}
-
-	@RequestMapping(value = "/contact", method = RequestMethod.GET)
-	public String contact(final Locale locale, final Model model) {
-		populateData(model);
-		return "contact";
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String admin(final Locale locale, final Model model) {
-		populateData(model);
-		return "login";
 	}
 
 	@RequestMapping(value = "/loginToPizza", method = RequestMethod.POST)
@@ -154,7 +151,7 @@ public class PageController {
 
 			populateData(model);
 		} else {
-			
+
 		}
 		return "administrator";
 	}
