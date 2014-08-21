@@ -8,12 +8,11 @@
 </head>
 <body>
 
-	<div id="banner">
+	<div class="banner">
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
-
-		<div id="menu">
+		<div class="menu">
 			<table>
 				<tr>
 					<td><a href="/smvc" target="_self">Home</a></td>
@@ -25,21 +24,39 @@
 		</div>
 
 		<div class="login">
-			[ <a href="/smvc/login" target="_self" id="loginLink">Login</a>
-			]
+			[ <a href="/smvc/login" target="_self" id="loginLink">Login</a> ]
 		</div>
-		
+
 	</div>
 
 	<div class="main">
 
-		<div class="orderList"></div>
+		<div class="orderList">
+
+			<table class="orderListTable">
+				<c:forEach var="orderedItem" items="${cart}">
+					<tr>
+						<td>${orderedItem}</td>
+						<td class="price">${orderedItem.price}</td>
+						<td class="remove">x</td>
+					</tr>
+				</c:forEach>
+			</table>
+			<div class="total">£'${totalPrice}</div>
+		</div>
+
 		<div class="orderInfoForm">
-			<form action="/finalizeOrder" method="POST">
-				Name: <br> <input id="user" type="text"> Address: <br>
-				<input id="address" type="text"> ZIP-code: <br> <input
-					id="zipcode" type="text"> Phone: <br> <input
-					id="phone" type="number">
+			<form action="finalizeOrder" method="POST" id="finalizeOrder"
+				role="form">
+				Name: <br> <input id="user" type="text" name="name"> <br>
+				Address: <br> <input id="city" type="text" name="address">
+				<br> City: <br> <input id="address" type="text"
+					name="city"> <br> ZIP-code: <br> <input
+					id="zipcode" type="text" name="zipcode"> <br> Phone: <br>
+				<input id="phone" type="number" name="phone"> <br>
+				Comment: <br>
+				<textarea name="comment" form="finalizeOrder" rows="4" cols="50"></textarea>
+				<br>
 				<button type="submit">Finalize order</button>
 			</form>
 		</div>

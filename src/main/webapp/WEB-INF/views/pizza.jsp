@@ -24,13 +24,17 @@
 		</div>
 
 		<div class="login">
-			[ <a href="/smvc/login" target="_self" id="loginLink">Login</a>
-			]
+			[ <a href="/smvc/login" target="_self" id="loginLink">Login</a> ]
 		</div>
 
 	</div>
 
 	<div class="main">
+
+		<div class="proceed">
+			<a class="proceedLink" href="/smvc/order" target="_self">Proceed
+				to checkout (${cart.size()} items on list) >></a>
+		</div>
 
 		<c:forEach var="pizza" items="${pizzas}">
 			<div class="pizzaItem" id="${pizza.id}">
@@ -40,13 +44,13 @@
 				<p>${pizza.topping}</p>
 				<h6>Price:</h6>
 				<p>£ ${pizza.price}</p>
-				<form id="${pizza.id}" name="input" onsubmit="addPizza(this)"
-					method="get">
-					Quantity: <input type="number" name="user" size="4" value="0">
-					<input type="text" name="user" size="4" value="${pizza.name}"
-						hidden="true"> <input type="number" name="user" size="4"
-						value="${pizza.price}" hidden="true"> <input type="submit"
-						value="Add">
+				<form id="${pizza.id}" name="input" method="post"
+					action="addProduct">
+					Quantity: <input type="number" name="quantity" size="4" value="0">
+					<input type="text" name="name" value="${pizza.name}" hidden="true">
+					<input type="number" name="price" value="${pizza.price}"
+						hidden="true">
+					<button type="submit">Add</button>
 				</form>
 			</div>
 		</c:forEach>

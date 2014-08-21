@@ -1,6 +1,7 @@
 body {
 	background-color: #FFF09E;
 	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
 }
 
 .banner {
@@ -208,9 +209,62 @@ a:active {
 .login {
 	font-size: 12px;
 	font-weight: bold;
-	color : #ffffff;
+	color: #ffffff;
 	float: right;
 	position: absolute;
 	right: 20px;
 	color: #ffffff;
+}
+
+.proceedLink {
+	margin: 15px;
+	font-size: 12px;
+}
+
+.proceedLink:link {
+	color: #ff0000;
+	text-decoration: none;
+}
+
+.proceedLink:visited {
+	color: #ff0000;
+	text-decoration: none;
+}
+
+.proceedLink:hover {
+	color: #ff8040;
+	text-decoration: underline;
+}
+
+.proceedLink:active {
+	color: #ff8040;
+	text-decoration: none;
+}
+
+.orderList {
+	float: right;
+	background-color: #FFF09E;
+	width: 300px;
+	margin: 5px;
+	padding: 10px;
+	width: 300px;
+	background-color: #FFF09E;
+}
+
+.orderListTable {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+table.orderListTable td {
+	width: 50%;
+}
+
+.total {
+	text-align: center;
+	border-top: 2px solid #000;
+}
+
+.remove {
+	width: 10px;
 }

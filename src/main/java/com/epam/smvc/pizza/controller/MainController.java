@@ -2,7 +2,9 @@ package com.epam.smvc.pizza.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.apache.commons.io.FileUtils;
@@ -11,9 +13,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.epam.smvc.pizza.domain.Message;
@@ -29,6 +33,7 @@ import com.epam.smvc.pizza.service.UserService;
  * Handles requests for the application home page.
  */
 @Controller
+@SessionAttributes({ "cart" })
 public class MainController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(MainController.class);
@@ -49,6 +54,9 @@ public class MainController {
 
 	@RequestMapping(value = "/pizza", method = RequestMethod.GET)
 	public String pizza(final Locale locale, final Model model) {
+		if (!model.containsAttribute("cart")) {
+			model.addAttribute("cart", new ArrayList<Pizza>());
+		}
 		populateData(model);
 		return "pizza";
 	}
@@ -65,11 +73,75 @@ public class MainController {
 		return "contact";
 	}
 
-	// @RequestMapping(value = "/login", method = RequestMethod.GET)
-	// public String admin(final Locale locale, final Model model) {
-	// populateData(model);
-	// return "login";
-	// }
+	@RequestMapping(value = "/order", method = RequestMethod.GET)
+	public String order(final Locale locale, final Model model,
+			@ModelAttribute("cart") List<Pizza> cart) {
+		double sum = 0;
+		for (Pizza item : cart) {
+			sum += item.getPrice();
+		}
+
+		model.addAttribute("totalPrice", sum);
+		populateData(model);
+		return "order";
+	}
+
+	@RequestMapping(value = "/finalize", method = RequestMethod.GET)
+	public String finalize(final Locale locale, final Model model) {
+		return "finalize";
+	}
+
+	@RequestMapping(value = "/finalizeOrder", method = RequestMethod.POST)
+	public String finalizeOrder(final String name, final String address,
+			final String city, final String zipcode, final int phone,
+			final String comment, @ModelAttribute("cart") List<Pizza> cart,
+			final Locale locale, final Model model) {
+
+		logger.info(name);
+		logger.info(address);
+		logger.info(city);
+		logger.info(zipcode);
+		logger.info(Integer.toString(phone));
+		logger.info(comment);
+
+		double sum = 0;
+		for (Pizza item : cart) {
+			sum += item.getPrice();
+		}
+
+		model.addAttribute("totalPrice", sum);
+		populateData(model);
+		return "finalize";
+	}
+
+	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+	public String addProduct(final int quantity, final String name,
+			final double price, @ModelAttribute("cart") List<Pizza> cart,
+			final Model model) {
+		logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+				+ Integer.toString(quantity));
+		logger.info(name);
+		logger.info(Double.toString(price));
+		logger.info(Integer.toString(cart.size()));
+
+		Pizza pizza = getPizza(name);
+		for (int i = 0; i < quantity; i++) {
+			cart.add(pizza);
+		}
+
+		populateData(model);
+		return "redirect:/pizza";
+	}
+
+	private Pizza getPizza(final String pizzaName) {
+		Pizza p = null;
+		for (Pizza pizza : pizzaService.getRepository()) {
+			if (pizzaName.equals(pizza.getName())) {
+				p = pizza;
+			}
+		}
+		return p;
+	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(

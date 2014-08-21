@@ -1,6 +1,12 @@
 package com.epam.smvc.pizza.domain;
 
-public class Pizza {
+import java.io.Serializable;
+
+public class Pizza implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1946075805955746010L;
 	private int id;
 	private String name;
 	private double price;
@@ -56,5 +62,10 @@ public class Pizza {
 
 	public void setId(final int id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 }
