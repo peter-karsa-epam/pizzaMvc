@@ -22,10 +22,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.epam.smvc.pizza.domain.Message;
 import com.epam.smvc.pizza.domain.News;
+import com.epam.smvc.pizza.domain.Order;
+import com.epam.smvc.pizza.domain.OrderData;
 import com.epam.smvc.pizza.domain.Pizza;
 import com.epam.smvc.pizza.domain.User;
 import com.epam.smvc.pizza.service.MessageService;
 import com.epam.smvc.pizza.service.NewsService;
+import com.epam.smvc.pizza.service.OrderService;
 import com.epam.smvc.pizza.service.PizzaService;
 import com.epam.smvc.pizza.service.UserService;
 
@@ -33,7 +36,7 @@ import com.epam.smvc.pizza.service.UserService;
  * Handles requests for the application home page.
  */
 @Controller
-@SessionAttributes({ "cart" })
+@SessionAttributes({ "cart", "orderData" })
 public class MainController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(MainController.class);
@@ -45,6 +48,8 @@ public class MainController {
 	private NewsService newsService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private OrderService orderService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(final Locale locale, final Model model) {
@@ -86,11 +91,6 @@ public class MainController {
 		return "order";
 	}
 
-	@RequestMapping(value = "/finalize", method = RequestMethod.GET)
-	public String finalize(final Locale locale, final Model model) {
-		return "redirect:/finalize";
-	}
-
 	@RequestMapping(value = "/finalizeOrder", method = RequestMethod.POST)
 	public String finalizeOrder(final String name, final String address,
 			final String city, final String zipcode, final long phone,
@@ -109,9 +109,28 @@ public class MainController {
 			sum += item.getPrice();
 		}
 
+		model.addAttribute("orderData", new OrderData(name, address, city,
+				zipcode, phone, comment));
+
 		model.addAttribute("totalPrice", sum);
 		populateData(model);
 		return "finalize";
+	}
+
+	@RequestMapping(value = "/thanks", method = RequestMethod.GET)
+	public String orderNow(final Locale locale, final Model model,
+			@ModelAttribute("cart") List<Pizza> cart,
+			@ModelAttribute("orderData") OrderData orderData) {
+		orderPut(cart, orderData);
+
+		populateData(model);
+		return "thanks";
+	}
+
+	private void orderPut(List<Pizza> cart, OrderData orderData) {
+		Order order = new Order(orderData, cart, new Date());
+		orderService.addOrder(order);
+		cart.clear();
 	}
 
 	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)

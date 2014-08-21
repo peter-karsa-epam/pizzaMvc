@@ -31,36 +31,7 @@
 
 	<div class="main">
 
-		<div class="orderList">
-
-			<table class="orderListTable">
-				<c:forEach var="orderedItem" items="${cart}">
-					<tr>
-						<td>${orderedItem}</td>
-						<td class="price">${orderedItem.price}</td>
-						<td class="remove">x</td>
-					</tr>
-				</c:forEach>
-			</table>
-			<div class="total">£'${totalPrice}</div>
-		</div>
-
-		<div class="customerInfos">
-			Name:
-			<p>${orderData.name}</p>
-			Address:
-			<p>${orderData.address}</p>
-			City:
-			<p>${orderData.city}</p>
-			ZIP-code:
-			<p>${orderData.zipcode}</p>
-			Phone:
-			<p>${orderData.phone}</p>
-			Comment:
-			<p>${orderData.comment}</p>
-			<a class="click-me" href="/smvc/thanks">Click me</a>
-
-		</div>
+		<p>Thank you, for your order! It will arrive in 30-45 minutes!</p>
 
 	</div>
 

@@ -4,76 +4,25 @@ import java.util.Date;
 import java.util.List;
 
 public class Order {
-	private String name;
-	private String address;
-	private String city;
-	private String zipcode;
-	private long phone;
-	private String comment;
+	private OrderData data;
 	private List<Pizza> pizzas;
 	private Date date;
 
 	public Order() {
 	}
 
-	public Order(String name, String address, String city, String zipcode,
-			long phone, String comment, List<Pizza> pizzas, Date date) {
-		this.name = name;
-		this.address = address;
-		this.city = city;
-		this.zipcode = zipcode;
-		this.phone = phone;
-		this.comment = comment;
+	public Order(final OrderData data, final List<Pizza> pizzas, final Date date) {
+		this.data = data;
 		this.pizzas = pizzas;
 		this.date = date;
 	}
 
-	public String getName() {
-		return name;
+	public OrderData getData() {
+		return data;
 	}
 
-	public void setName(final String name) {
-		this.name = name;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(final String address) {
-		this.address = address;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(final String city) {
-		this.city = city;
-	}
-
-	public String getZipcode() {
-		return zipcode;
-	}
-
-	public void setZipcode(final String zipcode) {
-		this.zipcode = zipcode;
-	}
-
-	public long getPhone() {
-		return phone;
-	}
-
-	public void setPhone(final long phone) {
-		this.phone = phone;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(final String comment) {
-		this.comment = comment;
+	public void setData(OrderData data) {
+		this.data = data;
 	}
 
 	public List<Pizza> getPizzas() {
@@ -89,7 +38,7 @@ public class Order {
 		return date;
 	}
 
-	public void setDate(final Date date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 }
