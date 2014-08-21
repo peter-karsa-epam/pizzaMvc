@@ -88,12 +88,12 @@ public class MainController {
 
 	@RequestMapping(value = "/finalize", method = RequestMethod.GET)
 	public String finalize(final Locale locale, final Model model) {
-		return "finalize";
+		return "redirect:/finalize";
 	}
 
 	@RequestMapping(value = "/finalizeOrder", method = RequestMethod.POST)
 	public String finalizeOrder(final String name, final String address,
-			final String city, final String zipcode, final int phone,
+			final String city, final String zipcode, final long phone,
 			final String comment, @ModelAttribute("cart") List<Pizza> cart,
 			final Locale locale, final Model model) {
 
@@ -101,7 +101,7 @@ public class MainController {
 		logger.info(address);
 		logger.info(city);
 		logger.info(zipcode);
-		logger.info(Integer.toString(phone));
+		logger.info(Long.toString(phone));
 		logger.info(comment);
 
 		double sum = 0;
