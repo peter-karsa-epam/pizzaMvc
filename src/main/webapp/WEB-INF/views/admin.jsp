@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ page session="false"%>
 <html>
 <head>
@@ -12,6 +14,12 @@
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
 
+		<div class="login">
+			<sec:authorize access="hasRole('admin')">
+			Welcome
+			[ <a href="/smvc/login" target="_self">Logout</a> ]
+			</sec:authorize>
+		</div>
 	</div>
 
 	<div class="main">

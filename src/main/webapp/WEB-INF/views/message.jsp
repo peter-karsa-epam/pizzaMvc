@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ page session="false"%>
 <html>
 <head>
@@ -25,7 +27,13 @@
 		</div>
 
 		<div class="login">
+			<sec:authorize access="isAnonymous()">
 			[ <a href="/smvc/login" target="_self">Login</a> ]
+			</sec:authorize>
+			<sec:authorize access="hasRole('user')">
+			Welcome
+			[ <a href="/smvc/login" target="_self">Logout</a> ]
+			</sec:authorize>
 		</div>
 
 	</div>
