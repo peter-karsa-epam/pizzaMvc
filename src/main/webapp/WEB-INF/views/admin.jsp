@@ -12,33 +12,6 @@
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
 
-		<!-- 		<div class="menu"> -->
-		<!-- 			<table> -->
-		<!-- 				<tr> -->
-		<!-- 					<td><a href="/smvc" target="_self">Home</a></td> -->
-		<!-- 					<td><a href="/smvc/pizza" target="_self">Pizzas</a></td> -->
-		<!-- 					<td><a href="/smvc/message" target="_self">Message</a></td> -->
-		<!-- 					<td><a href="/smvc/contact" target="_self">Contact</a></td> -->
-		<!-- 				</tr> -->
-		<!-- 			</table> -->
-		<!-- 		</div> -->
-
-		<div class="login">
-
-			<c:url value="/j_spring_security_logout" var="logoutUrl" />
-
-			<c:if test="${pageContext.request.userPrincipal.name != null}">
-				<h2>
-					[ <a href="javascript:formSubmit()">Logout</a> ]
-				</h2>
-			</c:if>
-
-			<form action="${logoutUrl}" method="post" id="logoutForm">
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
-			</form>
-		</div>
-
 	</div>
 
 	<div class="main">

@@ -2,6 +2,7 @@ package com.epam.smvc.pizza.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -83,7 +84,7 @@ public class MainController {
 			sum += item.getPrice();
 		}
 
-		model.addAttribute("totalPrice", sum);
+		model.addAttribute("totalPrice", new DecimalFormat("##.##").format(sum));
 		populateData(model);
 		return "order";
 	}
@@ -93,13 +94,6 @@ public class MainController {
 			final String city, final String zipcode, final long phone,
 			final String comment, @ModelAttribute("cart") List<Pizza> cart,
 			final Locale locale, final Model model) {
-
-		logger.info(name);
-		logger.info(address);
-		logger.info(city);
-		logger.info(zipcode);
-		logger.info(Long.toString(phone));
-		logger.info(comment);
 
 		double sum = 0;
 		for (Pizza item : cart) {
@@ -134,11 +128,6 @@ public class MainController {
 	public String addProduct(final int quantity, final String name,
 			final double price, @ModelAttribute("cart") List<Pizza> cart,
 			final Model model) {
-		logger.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-				+ Integer.toString(quantity));
-		logger.info(name);
-		logger.info(Double.toString(price));
-		logger.info(Integer.toString(cart.size()));
 
 		Pizza pizza = getPizza(name);
 		for (int i = 0; i < quantity; i++) {
@@ -173,7 +162,7 @@ public class MainController {
 			model.addAttribute("msg", "You've been logged out successfully.");
 		}
 
-		return "administrator";
+		return "admin";
 	}
 
 	@RequestMapping(value = "/addMsg", method = RequestMethod.POST)
