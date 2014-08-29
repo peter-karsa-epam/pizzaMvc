@@ -1,6 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page session="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page session="true"%>
 <html>
 <head>
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
@@ -42,8 +41,6 @@
 				User: <br> <input type="text" name="username" id="loginUser" />
 				<br> Password: <br> <input type="password" name="password"
 					id="loginPw" /> <br> <input type="submit" value="Login">
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
 			</form>
 		</div>
 	</div>

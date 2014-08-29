@@ -8,12 +8,12 @@
 <script type="text/javascript" src="resources/js/sessionvars.js"></script>
 <title>Luigis' Pizza</title>
 </head>
-<body>
-
+<body onload='document.loginForm.username.focus();'>
 	<div class="banner">
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
+
 		<div class="menu">
 			<table>
 				<tr>
@@ -24,23 +24,13 @@
 				</tr>
 			</table>
 		</div>
-
-		<div class="login">
-			<sec:authorize access="isAnonymous()">
-			[ <a href="/smvc/login" target="_self">Login</a> ]
-			</sec:authorize>
-			<sec:authorize access="hasRole('user')">
-			Welcome
-			[ <a href="/smvc/login" target="_self">Logout</a> ]
-			</sec:authorize>
-		</div>
-
 	</div>
 
 	<div class="main">
-
-		<p>Thank you, for your order! It will arrive in 30-45 minutes!</p>
-
+		<h3>Login:</h3>
+		<div class="registerForm">
+			<form name="regiesterForm" method="POST"></form>
+		</div>
 	</div>
 
 	<script type="text/javascript" src="resources/js/script.js"></script>

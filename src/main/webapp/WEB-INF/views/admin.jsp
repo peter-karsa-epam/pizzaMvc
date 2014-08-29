@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<%@ page session="false"%>
+<%@ page session="true"%>
 <html>
 <head>
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
@@ -35,7 +35,9 @@
 		</form>
 
 	</div>
+	
 	<br>
+	
 	<div class="main">
 
 		<h3>Add news to homepage</h3>

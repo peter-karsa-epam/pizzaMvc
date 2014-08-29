@@ -49,7 +49,7 @@ public class MainController {
 	@Autowired
 	private OrderService orderService;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String home(final Locale locale, final Model model) {
 		populateData(model);
 		return "home";
@@ -74,6 +74,12 @@ public class MainController {
 	public String contact(final Locale locale, final Model model) {
 		populateData(model);
 		return "contact";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(final Locale locale, final Model model) {
+		populateData(model);
+		return "login";
 	}
 
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
@@ -148,8 +154,8 @@ public class MainController {
 		return p;
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String admin(
 			@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout,
 			final Locale locale, final Model model) {
@@ -184,26 +190,6 @@ public class MainController {
 		return "redirect:/message";
 	}
 
-	@RequestMapping(value = "/loginToPizza", method = RequestMethod.POST)
-	public String loginA(
-			@RequestParam(value = "user", required = false) final String user,
-			@RequestParam(value = "password", required = false) final String password,
-			final Locale locale, final Model model) {
-		String ret = "redirect:/admin";
-		for (User curr : userService.getRepository()) {
-			if (curr.isAdmin()) {
-				if (user.equals(curr.getUser())
-						&& password.equals(curr.getPassword())) {
-					ret = "administrator";
-					break;
-				}
-			}
-		}
-
-		populateData(model);
-		return ret;
-	}
-
 	@RequestMapping(value = "/addNews", method = RequestMethod.POST)
 	public String addNews(
 			@RequestParam(value = "newsTitle", required = false) final String title,
@@ -221,7 +207,7 @@ public class MainController {
 			model.addAttribute("newss", newsService.getRepository());
 		}
 		populateData(model);
-		return "administrator";
+		return "admin";
 	}
 
 	@RequestMapping(value = "/addPizza", method = RequestMethod.POST)
@@ -247,7 +233,7 @@ public class MainController {
 		} else {
 
 		}
-		return "administrator";
+		return "admin";
 	}
 
 	private int getNewId() {
