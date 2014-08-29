@@ -42,8 +42,18 @@
 
 		<div class="postMessage">
 			<form role="form" action="/smvc/addMsg" method="POST" id="newMsg">
-				Name: <br> <input type="text" name="name" /> <br>
-				Message: <br>
+
+				<sec:authorize access="isAnonymous()">Name: <br>
+					<input type="text" name="name" />
+					<br>
+				</sec:authorize>
+
+				<sec:authorize access="hasRole('ROLE_USER')">Name: ${pageContext.request.userPrincipal.name} <br>
+					<input type="text" name="name"
+						value="${pageContext.request.userPrincipal.name}" hidden="true" />
+				</sec:authorize>
+
+				<br> Message: <br>
 				<textarea name="text" form="newMsg" rows="4" cols="50"></textarea>
 				<br>
 				<button type="submit">Send</button>
