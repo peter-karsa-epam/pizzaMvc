@@ -26,12 +26,12 @@
 		</div>
 
 		<div class="login">
-						<sec:authorize access="isAnonymous()">
+			<sec:authorize access="isAnonymous()">
 			[ <a href="/smvc/login" target="_self">Login</a> ]
 			</sec:authorize>
-			<sec:authorize access="hasRole('user')">
-			Welcome
-			[ <a href="/smvc/login" target="_self">Logout</a> ]
+			<sec:authorize access="hasRole('ROLE_USER')">
+			Hi ${pageContext.request.userPrincipal.name}! [ <a href="/smvc/logout"
+					target="_self">Logout</a> ]
 			</sec:authorize>
 		</div>
 

@@ -15,9 +15,9 @@
 			height="150px" width="150px">
 
 		<div class="login">
-			<sec:authorize access="hasRole('admin')">
-			Welcome
-			[ <a href="/smvc/login" target="_self">Logout</a> ]
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+			Hi ${pageContext.request.userPrincipal.name}! [ <a
+					href="/smvc/logout" target="_self">Logout</a> ]
 			</sec:authorize>
 		</div>
 	</div>
@@ -35,9 +35,9 @@
 		</form>
 
 	</div>
-	
+
 	<br>
-	
+
 	<div class="main">
 
 		<h3>Add news to homepage</h3>

@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +29,6 @@ import com.epam.smvc.pizza.domain.News;
 import com.epam.smvc.pizza.domain.Order;
 import com.epam.smvc.pizza.domain.OrderData;
 import com.epam.smvc.pizza.domain.Pizza;
-import com.epam.smvc.pizza.domain.User;
 import com.epam.smvc.pizza.service.MessageService;
 import com.epam.smvc.pizza.service.NewsService;
 import com.epam.smvc.pizza.service.OrderService;
@@ -76,10 +78,34 @@ public class MainController {
 		return "contact";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(final Locale locale, final Model model) {
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(final Locale locale, final Model model) {
 		populateData(model);
-		return "login";
+		return "home";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(
+			@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout,
+			final Locale locale, final Model model, HttpServletRequest req,
+			HttpServletResponse resp) {
+		String ret = "login";
+		if (error != null) {
+			model.addAttribute("error", "Invalid username and password!");
+		}
+
+		if (logout != null) {
+			model.addAttribute("msg", "You've been logged out successfully.");
+			ret = "home";
+		}
+
+		if (req.isUserInRole("ROLE_ADMIN")) {
+			ret = "admin";
+		}
+
+		populateData(model);
+		return ret;
 	}
 
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
@@ -152,23 +178,6 @@ public class MainController {
 			}
 		}
 		return p;
-	}
-
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String admin(
-			@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout,
-			final Locale locale, final Model model) {
-
-		if (error != null) {
-			model.addAttribute("error", "Invalid username and password!");
-		}
-
-		if (logout != null) {
-			model.addAttribute("msg", "You've been logged out successfully.");
-		}
-
-		return "admin";
 	}
 
 	@RequestMapping(value = "/addMsg", method = RequestMethod.POST)
