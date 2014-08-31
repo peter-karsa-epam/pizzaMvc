@@ -10,23 +10,15 @@
 	<http pattern="/resources/pizzapic/**" security="none" />
 	
 	<http auto-config="true" use-expressions="true" >
-	
-		<intercept-url pattern="/" access="isAnonymous()" />
-		<intercept-url pattern="/pizza" access="isAnonymous()" />
-		<intercept-url pattern="/contact" access="isAnonymous()" />
-		<intercept-url pattern="/login" access="isAnonymous()" />
-		<intercept-url pattern="/order" access="isAnonymous()" />
-		<intercept-url pattern="/finalize" access="isAnonymous()" />
-		<intercept-url pattern="/message" access="isAnonymous()" />
-		
-		<intercept-url pattern="/" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/pizza" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/contact" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/order" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/finalize" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/message" access="hasRole('ROLE_USER')" />
-		
 		<intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
+	
+		<intercept-url pattern="/" access="isAnonymous() or hasRole('ROLE_USER')" />
+		<intercept-url pattern="/pizza" access="isAnonymous() or hasRole('ROLE_USER')" />
+		<intercept-url pattern="/contact" access="isAnonymous() or hasRole('ROLE_USER')" />
+		<intercept-url pattern="/login" access="isAnonymous() or hasRole('ROLE_USER')" />
+		<intercept-url pattern="/order" access="isAnonymous() or hasRole('ROLE_USER')" />
+		<intercept-url pattern="/finalize" access="isAnonymous() or hasRole('ROLE_USER')" />
+		<intercept-url pattern="/message" access="isAnonymous() or hasRole('ROLE_USER')" />		
 		
 		<form-login login-page="/login" default-target-url="/"
 			authentication-failure-url="/login?error" username-parameter="username"
