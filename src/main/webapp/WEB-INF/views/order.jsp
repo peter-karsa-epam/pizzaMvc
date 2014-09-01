@@ -74,13 +74,13 @@
 				<form action="finalizeOrder" method="POST" id="finalizeOrder"
 					role="form">
 					Name: <br> <input id="user" type="text" name="name"
-						value="${user.name}"> <br> Address: <br> <input
-						id="city" type="text" name="address" value="${user.address}">
+						value="${userData.name}"> <br> Address: <br> <input
+						id="city" type="text" name="address" value="${userData.address}">
 					<br> City: <br> <input id="address" type="text"
-						name="city" value="${user.city}"> <br> ZIP-code: <br>
-					<input id="zipcode" type="text" name="zipcode" ${user.zipcode}>
+						name="city" value="${userData.city}"> <br> ZIP-code: <br>
+					<input id="zipcode" type="text" name="zipcode" value="${userData.zipcode}">
 					<br> Phone: <br> <input id="phone" type="number"
-						name="phone" value="${user.phone}"> <br> Comment: <br>
+						name="phone" value="${userData.phone}"> <br> Comment: <br>
 					<textarea name="comment" form="finalizeOrder" rows="4" cols="50"></textarea>
 					<br>
 					<button type="submit">Finalize order</button>

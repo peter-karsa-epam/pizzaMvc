@@ -16,6 +16,7 @@ public class UserRepository {
 	public UserRepository() {
 		User user = new User();
 		user.setUser("joe");
+		user.setName("Joe Singleton");
 		user.setPassword("12345");
 		user.setAdmin(false);
 		user.setAddress("Barker str. 27/a");
@@ -27,6 +28,7 @@ public class UserRepository {
 		
 		User user1 = new User();
 		user1.setUser("joe1");
+		user1.setName("Joe Doubleton");
 		user1.setPassword("12345");
 		user1.setAdmin(false);
 		user1.setAddress("Mayer str. 64");
