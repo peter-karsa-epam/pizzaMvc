@@ -7,6 +7,7 @@
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <script type="text/javascript" src="resources/js/sessionvars.js"></script>
 <title>Luigis' Pizza</title>
+<meta http-equiv="refresh" content="10">
 </head>
 <body>
 	<div class="banner">
@@ -42,7 +43,7 @@
 					<li>${pizzaItem.name}</li>
 				</c:forEach>
 			</ul>
-			<b>Total price: ${orderItem.totalCost}</b>
+			<b>Total price: £' ${orderItem.totalCost}</b>
 			<h5>Customer Information:</h5>
 			<div class="customerInfos">
 				Name:

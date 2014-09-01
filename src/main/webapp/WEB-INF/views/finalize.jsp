@@ -47,7 +47,6 @@
 					<tr>
 						<td>${orderedItem}</td>
 						<td class="price">${orderedItem.price}</td>
-						<td class="remove">x</td>
 					</tr>
 				</c:forEach>
 			</table>

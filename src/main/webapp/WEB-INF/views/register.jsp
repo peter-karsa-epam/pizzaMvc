@@ -27,12 +27,49 @@
 	</div>
 
 	<div class="main">
-		<h3>Login:</h3>
+		<h3>Register:</h3>
 		<div class="registerForm">
-			<form name="regiesterForm" method="POST"></form>
+			<form name="registerForm" action="resgisterNewUser" method="POST">
+				Name: <br> <input type="text" name="name"> <br>
+				City: <br> <input type="text" name="city"> <br>
+				Address: <br> <input type="text" name="address"> <br>
+				Zipcode: <br> <input type="text" name="zipcode"> <br>
+				Phone: <br> <input type="number" name="phone"> <br>
+				Email: <br> <input type="text" name="email"> <br>
+				Username (for login): <br> <input type="text" name="username">
+				<br> Password (for login): <br> <input id="pass"
+					type="password" name="password"> <span id="passstrength"></span><br>
+				<button type="submit">Register</button>
+			</form>
 		</div>
 	</div>
 
 	<script type="text/javascript" src="resources/js/script.js"></script>
+	<script type="text/javascript">
+		$('#pass')
+				.keyup(
+						function(e) {
+							var strongRegex = new RegExp(
+									"^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$",
+									"g");
+							var mediumRegex = new RegExp(
+									"^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$",
+									"g");
+							var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+							if (false == enoughRegex.test($(this).val())) {
+								$('#passstrength').html('More Characters');
+							} else if (strongRegex.test($(this).val())) {
+								$('#passstrength').className = 'ok';
+								$('#passstrength').html('Strong!');
+							} else if (mediumRegex.test($(this).val())) {
+								$('#passstrength').className = 'alert';
+								$('#passstrength').html('Medium!');
+							} else {
+								$('#passstrength').className = 'error';
+								$('#passstrength').html('Weak!');
+							}
+							return true;
+						});
+	</script>
 </body>
 </html>

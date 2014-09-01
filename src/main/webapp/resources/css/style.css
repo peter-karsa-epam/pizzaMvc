@@ -275,9 +275,18 @@ table.orderListTable td {
 	/* 	-o-appearance: button; */
 	/* 	-webkit-appearance: button; */
 	/* 	appearance: button; */
-	background-color: red; text-decoration : underline;
+	background-color: red;
+	text-decoration: underline;
 	font-weight: bold;
 	padding: 0.2em 0.4em;
 	color: #000;
 	text-decoration: underline;
 }
+
+#passstrength {
+    color:red;
+    font-family:verdana;
+    font-size:10px;
+    font-weight:bold;
+}
+
