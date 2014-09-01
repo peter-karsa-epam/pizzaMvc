@@ -67,9 +67,9 @@
 				<form id="${pizza.id}" name="input" method="post"
 					action="addProduct">
 					Quantity: <input type="number" name="quantity" size="4" value="0">
-					<input type="text" name="name" value="${pizza.name}" hidden="true">
+					<input type="text" name="name" value="${pizza.name}" hidden="true" readonly="readonly">
 					<input type="number" name="price" value="${pizza.price}"
-						hidden="true">
+						hidden="true" readonly="readonly">
 					<button type="submit">Add</button>
 				</form>
 			</div>

@@ -51,9 +51,9 @@
 						<td class="remove"><form action="removeItemFromList"
 								method="POST">
 								<input type="text" name="productName"
-									value="${orderedItem.name}" hidden="true"><input
+									value="${orderedItem.name}" hidden="true" readonly="readonly"><input
 									type="text" name="username"
-									value="${pageContext.request.userPrincipal.name}" hidden="true"></input>
+									value="${pageContext.request.userPrincipal.name}" hidden="true" readonly="readonly"></input>
 								<button type="submit">X</button>
 							</form></td>
 
@@ -74,7 +74,7 @@
 					<br> City: <br> <input id="address" type="text"
 						name="city"> <br> ZIP-code: <br> <input
 						id="zipcode" type="text" name="zipcode"> <br> Phone:
-					<br> <input id="phone" type="number" name="phone"> <br>
+					<br> <input id="phone" type="tel" name="phone"> <br>
 					Comment: <br>
 					<textarea name="comment" form="finalizeOrder" rows="4" cols="50"></textarea>
 					<br>

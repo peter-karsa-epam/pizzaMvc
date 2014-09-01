@@ -119,14 +119,6 @@ public class MainController {
 		return ret;
 	}
 
-	private void getCartPrice(final Model model, List<Pizza> cart) {
-		double sum = 0;
-		for (Pizza item : cart) {
-			sum += item.getPrice();
-		}
-		model.addAttribute("totalPrice", new DecimalFormat("##.##").format(sum));
-	}
-
 	@RequestMapping(value = "/orders", method = RequestMethod.GET)
 	public String orders(final Locale locale, final Model model) {
 		filterDeliveredOrders(model);
@@ -135,11 +127,10 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(
+	public String login(final Locale locale, final Model model,
+			HttpServletRequest req, HttpServletResponse resp,
 			@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout,
-			final Locale locale, final Model model, HttpServletRequest req,
-			HttpServletResponse resp) {
+			@RequestParam(value = "logout", required = false) String logout) {
 		String ret = "login";
 		if (error != null) {
 			model.addAttribute("error", "Invalid username and password!");
@@ -172,7 +163,7 @@ public class MainController {
 	public String removeItem(final Locale locale, final Model model,
 			@ModelAttribute("cart") List<Pizza> cart, final String productName,
 			final String username) {
-		String ret = "order";
+		String ret = "redirect:/order";
 		for (int i = 0; i < cart.size(); i++) {
 			if (cart.get(i).getName().equals(productName)) {
 				cart.remove(i);
@@ -196,13 +187,9 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/setDelivered", method = RequestMethod.POST)
-	public String setItemDelivered(final String name, final String date,
-			final Locale locale, final Model model) {
-		logger.info(name);
-		logger.info(date);
-
+	public String setItemDelivered(final Locale locale, final Model model,
+			final String name, final String date) {
 		for (Order item : orderService.getRepository()) {
-			logger.info(item.isDelivered() + " !!!!!!!!!!!!!!!!!!!!!!");
 			if (date.equals(item.getDate().toString()) && name.equals(name)) {
 				item.setDelivered(true);
 			}
@@ -229,21 +216,6 @@ public class MainController {
 		return ret;
 	}
 
-	private void getUserData(final String username, final Model model) {
-		User user = new User();
-		for (User userNow : userService.getRepository()) {
-			if (userNow.getUser().equals(username)) {
-				user.setUser(username);
-				user.setAddress(userNow.getAddress());
-				user.setCity(userNow.getCity());
-				user.setName(userNow.getName());
-				user.setZipcode(userNow.getZipcode());
-				user.setPhone(userNow.getPhone());
-			}
-		}
-		model.addAttribute("userData", user);
-	}
-
 	@RequestMapping(value = "/finalizeOrder", method = RequestMethod.POST)
 	public String finalizeOrder(final String name, final String address,
 			final String city, final String zipcode, final long phone,
@@ -258,7 +230,7 @@ public class MainController {
 		model.addAttribute("orderData", new OrderData(name, address, city,
 				zipcode, phone, comment));
 
-		model.addAttribute("totalPrice", sum);
+		model.addAttribute("totalPrice", new DecimalFormat("##.##").format(sum));
 		populateData(model);
 		return "finalize";
 	}
@@ -306,12 +278,11 @@ public class MainController {
 			news.setContent(text);
 			news.setDateAdded(new Date());
 			newsService.addRepository(news);
-			logger.info(title);
-			logger.info(text);
+
 			model.addAttribute("newss", newsService.getRepository());
 		}
 		populateData(model);
-		return "admin";
+		return "redirect:/admin";
 	}
 
 	@RequestMapping(value = "/addPizza", method = RequestMethod.POST)
@@ -394,5 +365,28 @@ public class MainController {
 		}
 
 		model.addAttribute("orders", orders);
+	}
+
+	private void getUserData(final String username, final Model model) {
+		User user = new User();
+		for (User userNow : userService.getRepository()) {
+			if (userNow.getUser().equals(username)) {
+				user.setUser(username);
+				user.setAddress(userNow.getAddress());
+				user.setCity(userNow.getCity());
+				user.setName(userNow.getName());
+				user.setZipcode(userNow.getZipcode());
+				user.setPhone(userNow.getPhone());
+			}
+		}
+		model.addAttribute("userData", user);
+	}
+
+	private void getCartPrice(final Model model, List<Pizza> cart) {
+		double sum = 0;
+		for (Pizza item : cart) {
+			sum += item.getPrice();
+		}
+		model.addAttribute("totalPrice", new DecimalFormat("##.##").format(sum));
 	}
 }

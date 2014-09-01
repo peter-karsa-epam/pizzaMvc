@@ -34,7 +34,7 @@
 				City: <br> <input type="text" name="city"> <br>
 				Address: <br> <input type="text" name="address"> <br>
 				Zipcode: <br> <input type="text" name="zipcode"> <br>
-				Phone: <br> <input type="number" name="phone"> <br>
+				Phone: <br> <input type="tel" name="phone"> <br>
 				Email: <br> <input type="text" name="email"> <br>
 				Username (for login): <br> <input type="text" name="username">
 				<br> Password (for login): <br> <input id="pass"
