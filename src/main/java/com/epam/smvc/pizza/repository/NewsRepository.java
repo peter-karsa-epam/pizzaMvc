@@ -21,4 +21,16 @@ public class NewsRepository {
 	public void addNews(final News newsItem) {
 		this.news.add(newsItem);
 	}
+
+	// just for test
+	public NewsRepository() {
+		news.add(new News(
+				"Spring MVC",
+				"While somewhat flexible, the mechanism to determine this target"
+						+ " URL does not allow the determination to be done programatically"
+						+ " – so we’re going to implement the interface and provide a custom"
+						+ " implementation of the success handler. This implementation is going"
+						+ " to determine the URL to redirect the user to after login based on the"
+						+ " role of the user:"));
+	}
 }

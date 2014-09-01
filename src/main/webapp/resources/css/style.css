@@ -270,12 +270,14 @@ table.orderListTable td {
 }
 
 .click-me {
-	-moz-appearance: button;
-	-ms-appearance: button;
-	-o-appearance: button;
-	-webkit-appearance: button;
-	appearance: button;
-	text-decoration: none;
-	color: #000;
+	/* 	-moz-appearance: button; */
+	/* 	-ms-appearance: button; */
+	/* 	-o-appearance: button; */
+	/* 	-webkit-appearance: button; */
+	/* 	appearance: button; */
+	background-color: red; text-decoration : underline;
+	font-weight: bold;
 	padding: 0.2em 0.4em;
+	color: #000;
+	text-decoration: underline;
 }

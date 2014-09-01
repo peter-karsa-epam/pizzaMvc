@@ -40,8 +40,19 @@
 	<div class="main">
 
 		<div class="proceed">
-			<a class="proceedLink" href="/smvc/order" target="_self">Proceed
-				to checkout (${cart.size()} items on list) >></a>
+			<sec:authorize access="hasRole('ROLE_USER')">
+				<form action="postUserNameLoggedIn" method="POST">
+					<input id="user" type="text" name="username"
+						value="${pageContext.request.userPrincipal.name}" hidden="true">
+					<button type="submit">Proceed to checkout (${cart.size()}
+						items on list) >></button>
+				</form>
+			</sec:authorize>
+
+			<sec:authorize access="isAnonymous()">
+				<a class="proceedLink" href="/smvc/order" target="_self">Proceed
+					to checkout (${cart.size()} items on list) >></a>
+			</sec:authorize>
 		</div>
 
 		<c:forEach var="pizza" items="${pizzas}">

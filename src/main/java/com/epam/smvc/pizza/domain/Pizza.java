@@ -66,6 +66,6 @@ public class Pizza implements Serializable {
 
 	@Override
 	public String toString() {
-		return name;
+		return name + "\t" + price;
 	}
 }

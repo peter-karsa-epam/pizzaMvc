@@ -6,6 +6,16 @@ public class News implements Comparable<News> {
 	private String title;
 	private String content;
 	private Date date;
+	
+	public News() {
+		
+	}
+
+	public News(final String title, final String content) {
+		this.title = title;
+		this.content =content;
+		this.date = new Date();
+	}
 
 	public String getTitle() {
 		return title;

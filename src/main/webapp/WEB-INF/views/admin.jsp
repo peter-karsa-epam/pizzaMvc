@@ -13,6 +13,15 @@
 		<h1>Luigi's pizza</h1>
 		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
 			height="150px" width="150px">
+			
+			<div class="menu">
+			<table>
+				<tr>
+					<td><a href="/smvc/admin" target="_self">New items & news</a></td>
+					<td><a href="/smvc/orders" target="_self">Orders</a></td>
+				</tr>
+			</table>
+		</div>
 
 		<div class="login">
 			<sec:authorize access="hasRole('ROLE_ADMIN')">

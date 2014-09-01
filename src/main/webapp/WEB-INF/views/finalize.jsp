@@ -66,8 +66,10 @@
 			<p>${orderData.phone}</p>
 			Comment:
 			<p>${orderData.comment}</p>
-			<a class="click-me" href="/smvc/thanks">Click me</a>
-
+			<a class="click-me" href="/smvc/thanks">Finalize Order</a>
+			<hr>
+			<a class="proceedLink" href="/smvc/order"
+					target="_self">Back to order informations!</a>
 		</div>
 
 	</div>

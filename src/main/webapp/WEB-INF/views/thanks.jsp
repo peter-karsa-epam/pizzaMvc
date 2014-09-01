@@ -40,7 +40,8 @@
 	<div class="main">
 
 		<p>Thank you, for your order! It will arrive in 30-45 minutes!</p>
-
+		<hr>
+		<a class="proceedLink" href="/smvc/pizza" target="_self">Back to more pizzas!</a>
 	</div>
 
 	<script type="text/javascript" src="resources/js/script.js"></script>

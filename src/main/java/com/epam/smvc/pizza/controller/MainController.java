@@ -29,6 +29,7 @@ import com.epam.smvc.pizza.domain.News;
 import com.epam.smvc.pizza.domain.Order;
 import com.epam.smvc.pizza.domain.OrderData;
 import com.epam.smvc.pizza.domain.Pizza;
+import com.epam.smvc.pizza.domain.User;
 import com.epam.smvc.pizza.service.MessageService;
 import com.epam.smvc.pizza.service.NewsService;
 import com.epam.smvc.pizza.service.OrderService;
@@ -84,6 +85,19 @@ public class MainController {
 		return "home";
 	}
 
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String admin(final Locale locale, final Model model) {
+		populateData(model);
+		return "admin";
+	}
+
+	@RequestMapping(value = "/orders", method = RequestMethod.GET)
+	public String orders(final Locale locale, final Model model) {
+		model.addAttribute("orders", orderService.getRepository());
+		populateData(model);
+		return "orders";
+	}
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(
 			@RequestParam(value = "error", required = false) String error,
@@ -111,12 +125,41 @@ public class MainController {
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
 	public String order(final Locale locale, final Model model,
 			@ModelAttribute("cart") List<Pizza> cart) {
-		double sum = 0;
-		for (Pizza item : cart) {
-			sum += item.getPrice();
+		String ret = "order";
+		if (!cart.isEmpty()) {
+			double sum = 0;
+			for (Pizza item : cart) {
+				sum += item.getPrice();
+			}
+			model.addAttribute("totalPrice",
+					new DecimalFormat("##.##").format(sum));
+		} else {
+			ret = "redirect:/pizza";
 		}
 
-		model.addAttribute("totalPrice", new DecimalFormat("##.##").format(sum));
+		populateData(model);
+		return ret;
+	}
+
+	@RequestMapping(value = "/postUserNameLoggedIn", method = RequestMethod.POST)
+	public String orderWithLoggedInUser(final String username,
+			final Locale locale, final Model model) {
+		logger.info(username + "!!!!!!!!!!!!!!!!!!!");
+		logger.info(userService.getRepository().size() + ".............");
+		User user = new User();
+		for (User userNow : userService.getRepository()) {
+			logger.info(userNow.getUser());
+			if (userNow.getUser().equals(username)) {
+				user.setUser(username);
+				user.setAddress(userNow.getAddress());
+				user.setCity(userNow.getCity());
+				user.setName(userNow.getName());
+				user.setZipcode(userNow.getZipcode());
+				user.setPhone(userNow.getPhone());
+			}
+		}
+
+		model.addAttribute("userData", user);
 		populateData(model);
 		return "order";
 	}
@@ -255,7 +298,6 @@ public class MainController {
 					"d:\\pizzaMvc\\src\\main\\webapp\\resources\\pizzapic\\"
 							+ name);
 			FileUtils.writeByteArrayToFile(file, image.getBytes());
-			System.out.println("OKOK");
 		} catch (IOException ioex) {
 		}
 	}

@@ -30,8 +30,8 @@
 			[ <a href="/smvc/login" target="_self">Login</a> ]
 			</sec:authorize>
 			<sec:authorize access="hasRole('ROLE_USER')">
-			Hi ${pageContext.request.userPrincipal.name}! [ <a href="/smvc/logout"
-					target="_self">Logout</a> ]
+			Hi ${pageContext.request.userPrincipal.name}! [ <a
+					href="/smvc/logout" target="_self">Logout</a> ]
 			</sec:authorize>
 		</div>
 
@@ -54,19 +54,41 @@
 		</div>
 
 		<div class="orderInfoForm">
-			<form action="finalizeOrder" method="POST" id="finalizeOrder"
-				role="form">
-				Name: <br> <input id="user" type="text" name="name"> <br>
-				Address: <br> <input id="city" type="text" name="address">
-				<br> City: <br> <input id="address" type="text"
-					name="city"> <br> ZIP-code: <br> <input
-					id="zipcode" type="text" name="zipcode"> <br> Phone: <br>
-				<input id="phone" type="number" name="phone"> <br>
-				Comment: <br>
-				<textarea name="comment" form="finalizeOrder" rows="4" cols="50"></textarea>
-				<br>
-				<button type="submit">Finalize order</button>
-			</form>
+			<sec:authorize access="isAnonymous()">
+				<form action="finalizeOrder" method="POST" id="finalizeOrder"
+					role="form">
+					Name: <br> <input id="user" type="text" name="name"> <br>
+					Address: <br> <input id="city" type="text" name="address">
+					<br> City: <br> <input id="address" type="text"
+						name="city"> <br> ZIP-code: <br> <input
+						id="zipcode" type="text" name="zipcode"> <br> Phone:
+					<br> <input id="phone" type="number" name="phone"> <br>
+					Comment: <br>
+					<textarea name="comment" form="finalizeOrder" rows="4" cols="50"></textarea>
+					<br>
+					<button type="submit">Finalize order</button>
+				</form>
+			</sec:authorize>
+
+			<sec:authorize access="hasRole('ROLE_USER')">
+				<form action="finalizeOrder" method="POST" id="finalizeOrder"
+					role="form">
+					Name: <br> <input id="user" type="text" name="name"
+						value="${user.name}"> <br> Address: <br> <input
+						id="city" type="text" name="address" value="${user.address}">
+					<br> City: <br> <input id="address" type="text"
+						name="city" value="${user.city}"> <br> ZIP-code: <br>
+					<input id="zipcode" type="text" name="zipcode" ${user.zipcode}>
+					<br> Phone: <br> <input id="phone" type="number"
+						name="phone" value="${user.phone}"> <br> Comment: <br>
+					<textarea name="comment" form="finalizeOrder" rows="4" cols="50"></textarea>
+					<br>
+					<button type="submit">Finalize order</button>
+				</form>
+			</sec:authorize>
+			<hr>
+			<a class="proceedLink" href="/smvc/pizza" target="_self">Back to
+				pizzas!</a>
 		</div>
 
 	</div>

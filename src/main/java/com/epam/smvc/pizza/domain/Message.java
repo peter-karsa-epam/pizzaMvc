@@ -7,6 +7,16 @@ public class Message implements Comparable<Message> {
 	private Date date;
 	private String message;
 
+	public Message() {
+
+	}
+
+	public Message(final String title, final String content) {
+		this.name = title;
+		this.message = content;
+		this.date = new Date();
+	}
+
 	public String getName() {
 		return name;
 	}
