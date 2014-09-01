@@ -36,12 +36,13 @@
 		<h3>Order List</h3>
 		<hr>
 		<c:forEach var="orderItem" items="${orders}">
+			<h6>Ordered products:</h6>
 			<ul>
 				<c:forEach var="pizzaItem" items="${orderItem.pizzas}">
-					<li> ${pizzaItem.name} </li>
+					<li>${pizzaItem.name}</li>
 				</c:forEach>
 			</ul>
-				<b>Total price: ${orderItem.totalCost}</b>
+			<b>Total price: ${orderItem.totalCost}</b>
 			<h5>Customer Information:</h5>
 			<div class="customerInfos">
 				Name:
@@ -59,6 +60,14 @@
 				Ordered:
 				<h6>${orderItem.date}</h6>
 			</div>
+
+			<form name="setDelivered" method="post" action="setDelivered">
+				<input type="text" name="name" value="${orderItem.data.name}"
+					hidden="true"> <input type="text" name="date"
+					value="${orderItem.date}" hidden="true">
+				<button type="submit">Set Order Delivered</button>
+			</form>
+
 			<hr>
 		</c:forEach>
 

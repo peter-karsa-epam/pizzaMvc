@@ -93,9 +93,24 @@ public class MainController {
 
 	@RequestMapping(value = "/orders", method = RequestMethod.GET)
 	public String orders(final Locale locale, final Model model) {
-		model.addAttribute("orders", orderService.getRepository());
+		filterDeliveredOrders(model);
 		populateData(model);
 		return "orders";
+	}
+
+	private void filterDeliveredOrders(final Model model) {
+		List<Order> orders = new ArrayList<>();
+		orders.clear();
+		orders.addAll(orderService.getRepository());
+
+		for (int i = 0; i < orders.size(); i++) {
+			if (orders.get(i).isDelivered()) {
+				orders.remove(i);
+				i--;
+			}
+		}
+
+		model.addAttribute("orders", orders);
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -141,27 +156,48 @@ public class MainController {
 		return ret;
 	}
 
-	@RequestMapping(value = "/postUserNameLoggedIn", method = RequestMethod.POST)
-	public String orderWithLoggedInUser(final String username,
+	@RequestMapping(value = "/setDelivered", method = RequestMethod.POST)
+	public String setItemDelivered(final String name, final String date,
 			final Locale locale, final Model model) {
-		logger.info(username + "!!!!!!!!!!!!!!!!!!!");
-		logger.info(userService.getRepository().size() + ".............");
-		User user = new User();
-		for (User userNow : userService.getRepository()) {
-			logger.info(userNow.getUser());
-			if (userNow.getUser().equals(username)) {
-				user.setUser(username);
-				user.setAddress(userNow.getAddress());
-				user.setCity(userNow.getCity());
-				user.setName(userNow.getName());
-				user.setZipcode(userNow.getZipcode());
-				user.setPhone(userNow.getPhone());
+		logger.info(name);
+		logger.info(date);
+
+		for (Order item : orderService.getRepository()) {
+			logger.info(item.isDelivered() + " !!!!!!!!!!!!!!!!!!!!!!");
+			if (date.equals(item.getDate().toString()) && name.equals(name)) {
+				item.setDelivered(true);
 			}
 		}
 
-		model.addAttribute("userData", user);
+		filterDeliveredOrders(model);
 		populateData(model);
-		return "order";
+		return "redirect:/orders";
+	}
+
+	@RequestMapping(value = "/postUserNameLoggedIn", method = RequestMethod.POST)
+	public String orderWithLoggedInUser(final String username,
+			final Locale locale, final Model model,
+			@ModelAttribute("cart") List<Pizza> cart) {
+		String ret = "order";
+		if (!cart.isEmpty()) {
+			User user = new User();
+			for (User userNow : userService.getRepository()) {
+				if (userNow.getUser().equals(username)) {
+					user.setUser(username);
+					user.setAddress(userNow.getAddress());
+					user.setCity(userNow.getCity());
+					user.setName(userNow.getName());
+					user.setZipcode(userNow.getZipcode());
+					user.setPhone(userNow.getPhone());
+				}
+			}
+			model.addAttribute("userData", user);
+		} else {
+			ret = "redirect:/pizza";
+		}
+
+		populateData(model);
+		return ret;
 	}
 
 	@RequestMapping(value = "/finalizeOrder", method = RequestMethod.POST)
@@ -235,8 +271,6 @@ public class MainController {
 			msg.setMessage(text);
 			msgService.addRepository(msg);
 		}
-		logger.info(name);
-		logger.info(text);
 
 		populateData(model);
 		return "redirect:/message";

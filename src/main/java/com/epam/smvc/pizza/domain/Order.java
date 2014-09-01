@@ -11,7 +11,7 @@ public class Order {
 	private List<Pizza> pizzas = new ArrayList<Pizza>();
 	private double totalCost;
 	private Date date;
-	private boolean isDelivered;
+	private boolean isDelivered = false;
 
 	public Order() {
 		setDelivered(false);
@@ -25,7 +25,6 @@ public class Order {
 		this.data = data;
 		setPizzas(pizzas);
 		this.date = date;
-		this.setDelivered(false);
 
 		for (Pizza item : pizzas) {
 			totalCost += item.getPrice();
