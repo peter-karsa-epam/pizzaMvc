@@ -1,4 +1,5 @@
 var timeSec = setInterval(timeFunc, 1000);
+var sec = 15;
 
 function timeFunc() {
 	document.getElementById().innerHTML = new Date();

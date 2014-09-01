@@ -7,6 +7,20 @@
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <script type="text/javascript" src="resources/js/sessionvars.js"></script>
 <title>Luigis' Pizza</title>
+<meta http-equiv="refresh" content="15;url=/smvc/" />
+<script type="text/javascript">
+	var timing = setInterval(doStuff, 1000);
+	var sec = 15;
+
+	function doStuff() {
+		if (sec != 0) {
+			sec -= 1;
+			document.getElementById("timeBefore").innerHTML = sec;
+		} else {
+			timing = null;
+		}
+	}
+</script>
 </head>
 <body>
 
@@ -40,9 +54,17 @@
 
 	<div class="main">
 
-		<p>Thank you, for your order! It will arrive in 30-45 minutes!</p>
+		<p>
+			Thank you, for your order! It will arrive in 30-45 minutes!
+			<it>(Don't forget that after 45 minutes the pizza is on the
+			house!)</it>
+		</p>
 		<hr>
-		<a class="proceedLink" href="/smvc/pizza" target="_self">Back to more pizzas!</a>
+		<a class="proceedLink" href="/smvc/pizza" target="_self">&lt;&lt; Back
+			to more pizzas!</a> <br> <br> Redirecting you to home page
+		in...
+		<p id="timeBefore">15</p>
+
 	</div>
 
 	<script type="text/javascript" src="resources/js/script.js"></script>

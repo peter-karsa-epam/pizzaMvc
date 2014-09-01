@@ -69,8 +69,8 @@
 			<p>${orderData.comment}</p>
 			<a class="click-me" href="/smvc/thanks">Finalize Order</a>
 			<hr>
-			<a class="proceedLink" href="/smvc/order"
-					target="_self">Back to order informations!</a>
+			<a class="proceedLink" href="/smvc/order" target="_self">&lt;&lt;
+				Back to order informations!</a>
 		</div>
 
 	</div>

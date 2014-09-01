@@ -124,8 +124,7 @@ public class MainController {
 		for (Pizza item : cart) {
 			sum += item.getPrice();
 		}
-		model.addAttribute("totalPrice",
-				new DecimalFormat("##.##").format(sum));
+		model.addAttribute("totalPrice", new DecimalFormat("##.##").format(sum));
 	}
 
 	@RequestMapping(value = "/orders", method = RequestMethod.GET)
@@ -221,6 +220,7 @@ public class MainController {
 		String ret = "order";
 		if (!cart.isEmpty()) {
 			getUserData(username, model);
+			getCartPrice(model, cart);
 		} else {
 			ret = "redirect:/pizza";
 		}
@@ -346,8 +346,13 @@ public class MainController {
 
 	private void saveImage(final String name, final MultipartFile image) {
 		try {
+			//
+			//
+			// IMPORTANT: configure file path to local environment!
+			//
+			//
 			File file = new File(
-					"d:\\pizzaMvc\\src\\main\\webapp\\resources\\pizzapic\\"
+					"d:\\springMVC\\pizzaMvc\\src\\main\\webapp\\resources\\pizzapic\\"
 							+ name);
 			FileUtils.writeByteArrayToFile(file, image.getBytes());
 		} catch (IOException ioex) {

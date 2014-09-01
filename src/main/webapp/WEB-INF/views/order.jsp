@@ -100,8 +100,8 @@
 				</form>
 			</sec:authorize>
 			<hr>
-			<a class="proceedLink" href="/smvc/pizza" target="_self">Back to
-				pizzas!</a>
+			<a class="proceedLink" href="/smvc/pizza" target="_self">
+				&lt;&lt; Back to pizzas!</a>
 		</div>
 
 	</div>
