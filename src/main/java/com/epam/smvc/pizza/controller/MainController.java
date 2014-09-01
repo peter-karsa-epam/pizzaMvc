@@ -91,26 +91,48 @@ public class MainController {
 		return "admin";
 	}
 
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String register(final Locale locale, final Model model) {
+		populateData(model);
+		return "register";
+	}
+
+	@RequestMapping(value = "/removeAllItems", method = RequestMethod.GET)
+	public String removeAllItems(final Locale locale, final Model model,
+			@ModelAttribute("cart") List<Pizza> cart) {
+		cart.clear();
+		populateData(model);
+		return "redirect:/pizza";
+	}
+
+	@RequestMapping(value = "/order", method = RequestMethod.GET)
+	public String order(final Locale locale, final Model model,
+			@ModelAttribute("cart") List<Pizza> cart) {
+		String ret = "order";
+		if (!cart.isEmpty()) {
+			getCartPrice(model, cart);
+		} else {
+			ret = "redirect:/pizza";
+		}
+
+		populateData(model);
+		return ret;
+	}
+
+	private void getCartPrice(final Model model, List<Pizza> cart) {
+		double sum = 0;
+		for (Pizza item : cart) {
+			sum += item.getPrice();
+		}
+		model.addAttribute("totalPrice",
+				new DecimalFormat("##.##").format(sum));
+	}
+
 	@RequestMapping(value = "/orders", method = RequestMethod.GET)
 	public String orders(final Locale locale, final Model model) {
 		filterDeliveredOrders(model);
 		populateData(model);
 		return "orders";
-	}
-
-	private void filterDeliveredOrders(final Model model) {
-		List<Order> orders = new ArrayList<>();
-		orders.clear();
-		orders.addAll(orderService.getRepository());
-
-		for (int i = 0; i < orders.size(); i++) {
-			if (orders.get(i).isDelivered()) {
-				orders.remove(i);
-				i--;
-			}
-		}
-
-		model.addAttribute("orders", orders);
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -137,19 +159,37 @@ public class MainController {
 		return ret;
 	}
 
-	@RequestMapping(value = "/order", method = RequestMethod.GET)
-	public String order(final Locale locale, final Model model,
-			@ModelAttribute("cart") List<Pizza> cart) {
+	@RequestMapping(value = "/thanks", method = RequestMethod.GET)
+	public String orderNow(final Locale locale, final Model model,
+			@ModelAttribute("cart") List<Pizza> cart,
+			@ModelAttribute("orderData") OrderData orderData) {
+		orderPut(cart, orderData);
+
+		populateData(model);
+		return "thanks";
+	}
+
+	@RequestMapping(value = "/removeItemFromList", method = RequestMethod.POST)
+	public String removeItem(final Locale locale, final Model model,
+			@ModelAttribute("cart") List<Pizza> cart, final String productName,
+			final String username) {
 		String ret = "order";
-		if (!cart.isEmpty()) {
-			double sum = 0;
-			for (Pizza item : cart) {
-				sum += item.getPrice();
+		for (int i = 0; i < cart.size(); i++) {
+			if (cart.get(i).getName().equals(productName)) {
+				cart.remove(i);
+
+				if (!cart.isEmpty()) {
+					getCartPrice(model, cart);
+				}
+
+				break;
 			}
-			model.addAttribute("totalPrice",
-					new DecimalFormat("##.##").format(sum));
-		} else {
+		}
+
+		if (cart.isEmpty()) {
 			ret = "redirect:/pizza";
+		} else {
+			getUserData(username, model);
 		}
 
 		populateData(model);
@@ -180,24 +220,28 @@ public class MainController {
 			@ModelAttribute("cart") List<Pizza> cart) {
 		String ret = "order";
 		if (!cart.isEmpty()) {
-			User user = new User();
-			for (User userNow : userService.getRepository()) {
-				if (userNow.getUser().equals(username)) {
-					user.setUser(username);
-					user.setAddress(userNow.getAddress());
-					user.setCity(userNow.getCity());
-					user.setName(userNow.getName());
-					user.setZipcode(userNow.getZipcode());
-					user.setPhone(userNow.getPhone());
-				}
-			}
-			model.addAttribute("userData", user);
+			getUserData(username, model);
 		} else {
 			ret = "redirect:/pizza";
 		}
 
 		populateData(model);
 		return ret;
+	}
+
+	private void getUserData(final String username, final Model model) {
+		User user = new User();
+		for (User userNow : userService.getRepository()) {
+			if (userNow.getUser().equals(username)) {
+				user.setUser(username);
+				user.setAddress(userNow.getAddress());
+				user.setCity(userNow.getCity());
+				user.setName(userNow.getName());
+				user.setZipcode(userNow.getZipcode());
+				user.setPhone(userNow.getPhone());
+			}
+		}
+		model.addAttribute("userData", user);
 	}
 
 	@RequestMapping(value = "/finalizeOrder", method = RequestMethod.POST)
@@ -219,22 +263,6 @@ public class MainController {
 		return "finalize";
 	}
 
-	@RequestMapping(value = "/thanks", method = RequestMethod.GET)
-	public String orderNow(final Locale locale, final Model model,
-			@ModelAttribute("cart") List<Pizza> cart,
-			@ModelAttribute("orderData") OrderData orderData) {
-		orderPut(cart, orderData);
-
-		populateData(model);
-		return "thanks";
-	}
-
-	private void orderPut(List<Pizza> cart, OrderData orderData) {
-		Order order = new Order(orderData, cart, new Date());
-		orderService.addOrder(order);
-		cart.clear();
-	}
-
 	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
 	public String addProduct(final int quantity, final String name,
 			final double price, @ModelAttribute("cart") List<Pizza> cart,
@@ -247,16 +275,6 @@ public class MainController {
 
 		populateData(model);
 		return "redirect:/pizza";
-	}
-
-	private Pizza getPizza(final String pizzaName) {
-		Pizza p = null;
-		for (Pizza pizza : pizzaService.getRepository()) {
-			if (pizzaName.equals(pizza.getName())) {
-				p = pizza;
-			}
-		}
-		return p;
 	}
 
 	@RequestMapping(value = "/addMsg", method = RequestMethod.POST)
@@ -340,5 +358,36 @@ public class MainController {
 		model.addAttribute("messages", msgService.getRepository());
 		model.addAttribute("pizzas", pizzaService.getRepository());
 		model.addAttribute("news", newsService.getRepository());
+	}
+
+	private Pizza getPizza(final String pizzaName) {
+		Pizza p = null;
+		for (Pizza pizza : pizzaService.getRepository()) {
+			if (pizzaName.equals(pizza.getName())) {
+				p = pizza;
+			}
+		}
+		return p;
+	}
+
+	private void orderPut(List<Pizza> cart, OrderData orderData) {
+		Order order = new Order(orderData, cart, new Date());
+		orderService.addOrder(order);
+		cart.clear();
+	}
+
+	private void filterDeliveredOrders(final Model model) {
+		List<Order> orders = new ArrayList<>();
+		orders.clear();
+		orders.addAll(orderService.getRepository());
+
+		for (int i = 0; i < orders.size(); i++) {
+			if (orders.get(i).isDelivered()) {
+				orders.remove(i);
+				i--;
+			}
+		}
+
+		model.addAttribute("orders", orders);
 	}
 }

@@ -27,6 +27,7 @@
 
 		<div class="login">
 			<sec:authorize access="isAnonymous()">
+			[ <a href="/smvc/register" target="_self">Register</a> ] 
 			[ <a href="/smvc/login" target="_self">Login</a> ]
 			</sec:authorize>
 			<sec:authorize access="hasRole('ROLE_USER')">
@@ -46,11 +47,22 @@
 					<tr>
 						<td>${orderedItem}</td>
 						<td class="price">${orderedItem.price}</td>
-						<td class="remove">x</td>
+
+						<td class="remove"><form action="removeItemFromList"
+								method="POST">
+								<input type="text" name="productName"
+									value="${orderedItem.name}" hidden="true"><input
+									type="text" name="username"
+									value="${pageContext.request.userPrincipal.name}" hidden="true"></input>
+								<button type="submit">X</button>
+							</form></td>
+
 					</tr>
 				</c:forEach>
 			</table>
 			<div class="total">£'${totalPrice}</div>
+			<a href="/smvc/removeAllItems" class="click-me" target="_self">Clear
+				list</a>
 		</div>
 
 		<div class="orderInfoForm">
@@ -77,10 +89,11 @@
 						value="${userData.name}"> <br> Address: <br> <input
 						id="city" type="text" name="address" value="${userData.address}">
 					<br> City: <br> <input id="address" type="text"
-						name="city" value="${userData.city}"> <br> ZIP-code: <br>
-					<input id="zipcode" type="text" name="zipcode" value="${userData.zipcode}">
-					<br> Phone: <br> <input id="phone" type="number"
-						name="phone" value="${userData.phone}"> <br> Comment: <br>
+						name="city" value="${userData.city}"> <br> ZIP-code:
+					<br> <input id="zipcode" type="text" name="zipcode"
+						value="${userData.zipcode}"> <br> Phone: <br> <input
+						id="phone" type="number" name="phone" value="${userData.phone}">
+					<br> Comment: <br>
 					<textarea name="comment" form="finalizeOrder" rows="4" cols="50"></textarea>
 					<br>
 					<button type="submit">Finalize order</button>

@@ -17,8 +17,8 @@
 		<div class="menu">
 			<table>
 				<tr>
-					<td><a href="/smvc/admin" target="_self">New items & news</a></td>
 					<td><a href="/smvc/orders" target="_self">Orders</a></td>
+					<td><a href="/smvc/admin" target="_self">New items & news</a></td>
 				</tr>
 			</table>
 		</div>

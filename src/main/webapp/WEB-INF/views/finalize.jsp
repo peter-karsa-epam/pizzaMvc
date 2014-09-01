@@ -27,6 +27,7 @@
 
 		<div class="login">
 			<sec:authorize access="isAnonymous()">
+			[ <a href="/smvc/register" target="_self">Register</a> ] 
 			[ <a href="/smvc/login" target="_self">Login</a> ]
 			</sec:authorize>
 			<sec:authorize access="hasRole('ROLE_USER')">

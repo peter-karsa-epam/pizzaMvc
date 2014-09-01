@@ -42,6 +42,8 @@
 				<br> Password: <br> <input type="password" name="password"
 					id="loginPw" /> <br> <input type="submit" value="Login">
 			</form>
+			<br> Not a member? <a href="/smvc/register" target="_self">Register</a>
+			now!
 		</div>
 	</div>
 
