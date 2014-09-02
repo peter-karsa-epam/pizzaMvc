@@ -88,7 +88,6 @@ public class MainController {
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String admin(final Locale locale, final Model model) {
 		filterDeliveredOrders(model);
-		populateData(model);
 		return "admin";
 	}
 
@@ -121,9 +120,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/adminNews", method = RequestMethod.GET)
-	public String orders(final Locale locale, final Model model) {
-
-		populateData(model);
+	public String adminNewsAndNewProducts(final Locale locale, final Model model) {
 		return "adminNews";
 	}
 
@@ -324,7 +321,7 @@ public class MainController {
 			//
 			//
 			File file = new File(
-					"d:\\springMVC\\pizzaMvc\\src\\main\\webapp\\resources\\pizzapic\\"
+					"d:\\pizzaMvc\\src\\main\\webapp\\resources\\pizzapic\\"
 							+ name);
 			FileUtils.writeByteArrayToFile(file, image.getBytes());
 		} catch (IOException ioex) {

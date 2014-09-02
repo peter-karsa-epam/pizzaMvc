@@ -73,11 +73,10 @@ a:active {
 }
 
 ul {
-	list-style: none;
+	list-style: decimal;
 }
 
 li {
-	float: left;
 	padding: 10px;
 }
 
