@@ -9,35 +9,35 @@
 <title>Luigis' Pizza</title>
 </head>
 <body>
+	<div class="headContainer">
+		<div class="banner">
+			<h1>Luigi's pizza</h1>
+			<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
+				height="150px" width="150px">
+			<div class="menu">
+				<table>
+					<tr>
+						<td><a href="/smvc" target="_self">Home</a></td>
+						<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
+						<td><a href="/smvc/message" target="_self">Message</a></td>
+						<td><a href="/smvc/contact" target="_self">Contact</a></td>
+					</tr>
+				</table>
+			</div>
 
-	<div class="banner">
-		<h1>Luigi's pizza</h1>
-		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
-			height="150px" width="150px">
-		<div class="menu">
-			<table>
-				<tr>
-					<td><a href="/smvc" target="_self">Home</a></td>
-					<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
-					<td><a href="/smvc/message" target="_self">Message</a></td>
-					<td><a href="/smvc/contact" target="_self">Contact</a></td>
-				</tr>
-			</table>
-		</div>
-
-		<div class="login">
-			<sec:authorize access="isAnonymous()">
+			<div class="login">
+				<sec:authorize access="isAnonymous()">
 			[ <a href="/smvc/register" target="_self">Register</a> ] 
 			[ <a href="/smvc/login" target="_self">Login</a> ]
 			</sec:authorize>
-			<sec:authorize access="hasRole('ROLE_USER')">
+				<sec:authorize access="hasRole('ROLE_USER')">
 			Hi ${pageContext.request.userPrincipal.name}! [ <a
-					href="/smvc/logout" target="_self">Logout</a> ]
+						href="/smvc/logout" target="_self">Logout</a> ]
 			</sec:authorize>
+			</div>
+
 		</div>
-
 	</div>
-
 	<div class="main">
 
 		<div class="orderList">
@@ -53,7 +53,8 @@
 								<input type="text" name="productName"
 									value="${orderedItem.name}" hidden="true" readonly="readonly"><input
 									type="text" name="username"
-									value="${pageContext.request.userPrincipal.name}" hidden="true" readonly="readonly"></input>
+									value="${pageContext.request.userPrincipal.name}" hidden="true"
+									readonly="readonly"></input>
 								<button type="submit">X</button>
 							</form></td>
 
@@ -100,8 +101,8 @@
 				</form>
 			</sec:authorize>
 			<hr>
-			<a class="proceedLink" href="/smvc/pizza" target="_self">
-				&lt;&lt; Back to pizzas!</a>
+			<a class="click-me" href="/smvc/pizza" target="_self"> &lt;&lt;
+				Back to pizzas!</a>
 		</div>
 
 	</div>

@@ -7,20 +7,22 @@
 <title>Luigis' Pizza</title>
 </head>
 <body onload='document.loginForm.username.focus();'>
-	<div class="banner">
-		<h1>Luigi's pizza</h1>
-		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
-			height="150px" width="150px">
+	<div class="headContainer">
+		<div class="banner">
+			<h1>Luigi's pizza</h1>
+			<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
+				height="150px" width="150px">
 
-		<div class="menu">
-			<table>
-				<tr>
-					<td><a href="/smvc" target="_self">Home</a></td>
-					<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
-					<td><a href="/smvc/message" target="_self">Message</a></td>
-					<td><a href="/smvc/contact" target="_self">Contact</a></td>
-				</tr>
-			</table>
+			<div class="menu">
+				<table>
+					<tr>
+						<td><a href="/smvc" target="_self">Home</a></td>
+						<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
+						<td><a href="/smvc/message" target="_self">Message</a></td>
+						<td><a href="/smvc/contact" target="_self">Contact</a></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</div>
 

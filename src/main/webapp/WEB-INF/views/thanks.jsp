@@ -23,20 +23,21 @@
 </script>
 </head>
 <body>
-
-	<div class="banner">
-		<h1>Luigi's pizza</h1>
-		<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
-			height="150px" width="150px">
-		<div class="menu">
-			<table>
-				<tr>
-					<td><a href="/smvc" target="_self">Home</a></td>
-					<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
-					<td><a href="/smvc/message" target="_self">Message</a></td>
-					<td><a href="/smvc/contact" target="_self">Contact</a></td>
-				</tr>
-			</table>
+	<div class="headContainer">
+		<div class="banner">
+			<h1>Luigi's pizza</h1>
+			<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
+				height="150px" width="150px">
+			<div class="menu">
+				<table>
+					<tr>
+						<td><a href="/smvc" target="_self">Home</a></td>
+						<td><a href="/smvc/pizza" target="_self">Pizzas</a></td>
+						<td><a href="/smvc/message" target="_self">Message</a></td>
+						<td><a href="/smvc/contact" target="_self">Contact</a></td>
+					</tr>
+				</table>
+			</div>
 		</div>
 
 		<div class="login">
@@ -60,8 +61,8 @@
 			house!)</it>
 		</p>
 		<hr>
-		<a class="proceedLink" href="/smvc/pizza" target="_self">&lt;&lt; Back
-			to more pizzas!</a> <br> <br> Redirecting you to home page
+		<a class="click-me" href="/smvc/pizza" target="_self">&lt;&lt;
+			Back to more pizzas!</a> <br> <br> Redirecting you to home page
 		in...
 		<p id="timeBefore">15</p>
 

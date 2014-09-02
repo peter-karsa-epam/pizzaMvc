@@ -1,7 +1,20 @@
 body {
-	background-color: #FFF09E;
+	padding: 0;
+	margin: 0;
+	background-color: #FFFADB;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
+}
+
+.headContainer {
+	display: block;
+	margin: 0;
+	padding: 0;
+	height: 150px;
+	background-color: #FF5252;
+	overflow: hidden;
+	width: 100%;
+	height: 150px;
 }
 
 .banner {
@@ -88,8 +101,6 @@ td {
 
 .main {
 	background-color: #FFFADB;
-	border: 1px solid;
-	border-color: #C4A700;
 	margin-left: auto;
 	margin-right: auto;
 	width: 80%;
@@ -177,7 +188,15 @@ a:active {
 .firmDetails {
 	padding: 15px;
 	margin: 15px;
-	background-color: #fff;
+}
+
+button {
+	background-color: red;
+	border: 0;
+	font-weight: bold;
+	padding: 0.2em 0.4em;
+	color: #ffffff;
+	text-decoration: none;
 }
 
 #mailLink {
@@ -260,6 +279,10 @@ table.orderListTable td {
 	width: 50%;
 }
 
+.dateNews {
+	float: right;
+}
+
 .total {
 	text-align: center;
 	border-top: 2px solid #000;
@@ -284,9 +307,8 @@ table.orderListTable td {
 }
 
 #passstrength {
-    color:red;
-    font-family:verdana;
-    font-size:10px;
-    font-weight:bold;
+	color: red;
+	font-family: verdana;
+	font-size: 10px;
+	font-weight: bold;
 }
-

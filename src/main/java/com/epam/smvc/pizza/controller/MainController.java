@@ -87,6 +87,7 @@ public class MainController {
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String admin(final Locale locale, final Model model) {
+		filterDeliveredOrders(model);
 		populateData(model);
 		return "admin";
 	}
@@ -119,11 +120,11 @@ public class MainController {
 		return ret;
 	}
 
-	@RequestMapping(value = "/orders", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminNews", method = RequestMethod.GET)
 	public String orders(final Locale locale, final Model model) {
-		filterDeliveredOrders(model);
+
 		populateData(model);
-		return "orders";
+		return "adminNews";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -197,7 +198,7 @@ public class MainController {
 
 		filterDeliveredOrders(model);
 		populateData(model);
-		return "redirect:/orders";
+		return "redirect:/admin";
 	}
 
 	@RequestMapping(value = "/postUserNameLoggedIn", method = RequestMethod.POST)
@@ -282,7 +283,7 @@ public class MainController {
 			model.addAttribute("newss", newsService.getRepository());
 		}
 		populateData(model);
-		return "redirect:/admin";
+		return "redirect:/adminNews";
 	}
 
 	@RequestMapping(value = "/addPizza", method = RequestMethod.POST)
@@ -308,7 +309,7 @@ public class MainController {
 		} else {
 
 		}
-		return "admin";
+		return "redirect:/adminNews";
 	}
 
 	private int getNewId() {
@@ -327,6 +328,7 @@ public class MainController {
 							+ name);
 			FileUtils.writeByteArrayToFile(file, image.getBytes());
 		} catch (IOException ioex) {
+			//
 		}
 	}
 
