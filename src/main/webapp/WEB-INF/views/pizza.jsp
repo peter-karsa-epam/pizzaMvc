@@ -55,6 +55,7 @@
 				<a class="click-me" href="/smvc/order" target="_self">Proceed to
 					checkout (${cart.size()} items on list) >></a>
 			</sec:authorize>
+			<hr>
 		</div>
 
 		<c:forEach var="pizza" items="${pizzas}">

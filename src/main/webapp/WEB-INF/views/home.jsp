@@ -9,7 +9,9 @@
 <title>Luigis' Pizza</title>
 </head>
 <body>
+
 	<div class="headContainer">
+	
 		<div class="banner">
 			<h1>Luigi's pizza</h1>
 			<img id="lologo" alt="logo" src="resources/pizzapic/logo.png"
@@ -35,9 +37,11 @@
 						href="/smvc/logout" target="_self">Logout</a> ]
 			</sec:authorize>
 			</div>
-
+			
 		</div>
+		
 	</div>
+
 
 	<div class="main">
 		<c:forEach var="newsitem" items="${news}">
