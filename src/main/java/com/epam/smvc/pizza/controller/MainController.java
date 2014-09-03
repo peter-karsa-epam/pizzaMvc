@@ -37,7 +37,7 @@ import com.epam.smvc.pizza.service.PizzaService;
 import com.epam.smvc.pizza.service.UserService;
 
 @Controller
-@SessionAttributes({ "cart", "orderData" })
+@SessionAttributes({ "cart", "orderData", "user" })
 public class MainController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(MainController.class);
@@ -54,6 +54,9 @@ public class MainController {
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String home(final Locale locale, final Model model) {
+		if (!model.containsAttribute("user")) {
+			model.addAttribute("user", "anonymous");
+		}
 		populateData(model);
 		return "home";
 	}
@@ -103,20 +106,6 @@ public class MainController {
 		cart.clear();
 		populateData(model);
 		return "redirect:/pizza";
-	}
-
-	@RequestMapping(value = "/order", method = RequestMethod.GET)
-	public String order(final Locale locale, final Model model,
-			@ModelAttribute("cart") List<Pizza> cart) {
-		String ret = "order";
-		if (!cart.isEmpty()) {
-			getCartPrice(model, cart);
-		} else {
-			ret = "redirect:/pizza";
-		}
-
-		populateData(model);
-		return ret;
 	}
 
 	@RequestMapping(value = "/adminNews", method = RequestMethod.GET)
@@ -198,12 +187,36 @@ public class MainController {
 		return "redirect:/admin";
 	}
 
-	@RequestMapping(value = "/postUserNameLoggedIn", method = RequestMethod.POST)
-	public String orderWithLoggedInUser(final String username,
-			final Locale locale, final Model model,
-			@ModelAttribute("cart") List<Pizza> cart) {
+	@RequestMapping(value = "/order", method = RequestMethod.GET)
+	public String order(final Locale locale, final Model model,
+			HttpServletRequest req, @ModelAttribute("cart") List<Pizza> cart,
+			@ModelAttribute("user") final String username) {
 		String ret = "order";
 		if (!cart.isEmpty()) {
+			if (req.isUserInRole("ROLE_USER")) {
+				if (!model.containsAttribute("user")) {
+					model.addAttribute("user", username);
+				}
+				getUserData(username, model);
+			}
+			getCartPrice(model, cart);
+		} else {
+			ret = "redirect:/pizza";
+		}
+
+		populateData(model);
+		return ret;
+	}
+
+	@RequestMapping(value = "/postUserNameLoggedIn", method = RequestMethod.POST)
+	public String orderWithLoggedInUser(HttpServletRequest req,
+			final String username, final Locale locale, final Model model,
+			@ModelAttribute("cart") List<Pizza> cart) {
+		String ret = "redirect:/order";
+		if (!cart.isEmpty()) {
+			if (req.isUserInRole("ROLE_USER")) {
+				model.addAttribute("user", username);
+			}
 			getUserData(username, model);
 			getCartPrice(model, cart);
 		} else {
