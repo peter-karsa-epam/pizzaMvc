@@ -5,6 +5,8 @@
 <html>
 <head>
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/sessionvars.js"></script>
 <title>Luigis' Pizza</title>
 </head>
@@ -48,30 +50,24 @@
 
 	<script type="text/javascript" src="resources/js/script.js"></script>
 	<script type="text/javascript">
-		$('#pass')
-				.keyup(
-						function(e) {
-							var strongRegex = new RegExp(
-									"^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$",
-									"g");
-							var mediumRegex = new RegExp(
-									"^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$",
-									"g");
-							var enoughRegex = new RegExp("(?=.{6,}).*", "g");
-							if (false == enoughRegex.test($(this).val())) {
-								$('#passstrength').html('More Characters');
-							} else if (strongRegex.test($(this).val())) {
-								$('#passstrength').className = 'ok';
-								$('#passstrength').html('Strong!');
-							} else if (mediumRegex.test($(this).val())) {
-								$('#passstrength').className = 'alert';
-								$('#passstrength').html('Medium!');
-							} else {
-								$('#passstrength').className = 'error';
-								$('#passstrength').html('Weak!');
-							}
-							return true;
-						});
+		$('#pass').keyup(function(e) {
+			var bla = $('#pass').val();
+			if (bla.length < 6) {
+				$('#passstrength').text('Too short (min. 6 characters)');
+			} else {
+				$('#passstrength').text('');
+			}
+		});
+
+		$("#pass").on({
+			keydown : function(e) {
+				if (e.which === 32)
+					return false;
+			},
+			change : function() {
+				this.value = this.value.replace(/\s/g, "");
+			}
+		});
 	</script>
 </body>
 </html>
