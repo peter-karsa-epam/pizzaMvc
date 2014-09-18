@@ -33,7 +33,7 @@
 	<div class="main">
 		<h3>Register:</h3>
 		<div class="registerForm">
-			<form name="registerForm" action="resgisterNewUser" method="POST">
+			<form name="registerForm" action="registerNewUser" method="POST">
 				Name: <br> <input type="text" name="name"> <br>
 				City: <br> <input type="text" name="city"> <br>
 				Address: <br> <input type="text" name="address"> <br>

@@ -30,6 +30,7 @@ import com.epam.smvc.pizza.domain.Order;
 import com.epam.smvc.pizza.domain.OrderData;
 import com.epam.smvc.pizza.domain.Pizza;
 import com.epam.smvc.pizza.domain.User;
+import com.epam.smvc.pizza.service.MailSender;
 import com.epam.smvc.pizza.service.MessageService;
 import com.epam.smvc.pizza.service.NewsService;
 import com.epam.smvc.pizza.service.OrderService;
@@ -57,7 +58,7 @@ public class MainController {
 		if (!model.containsAttribute("user")) {
 			model.addAttribute("user", "anonymous");
 		}
-		populateData(model);
+		model.addAttribute("news", newsService.getRepository());
 		return "home";
 	}
 
@@ -66,25 +67,24 @@ public class MainController {
 		if (!model.containsAttribute("cart")) {
 			model.addAttribute("cart", new ArrayList<Pizza>());
 		}
-		populateData(model);
+		model.addAttribute("pizzas", pizzaService.getRepository());
 		return "pizza";
 	}
 
 	@RequestMapping(value = "/message", method = RequestMethod.GET)
 	public String message(final Locale locale, final Model model) {
-		populateData(model);
+		model.addAttribute("messages", msgService.getRepository());
 		return "message";
 	}
 
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
 	public String contact(final Locale locale, final Model model) {
-		populateData(model);
 		return "contact";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(final Locale locale, final Model model) {
-		populateData(model);
+		model.addAttribute("news", newsService.getRepository());
 		return "home";
 	}
 
@@ -94,17 +94,10 @@ public class MainController {
 		return "admin";
 	}
 
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String register(final Locale locale, final Model model) {
-		populateData(model);
-		return "register";
-	}
-
 	@RequestMapping(value = "/removeAllItems", method = RequestMethod.GET)
 	public String removeAllItems(final Locale locale, final Model model,
 			@ModelAttribute("cart") List<Pizza> cart) {
 		cart.clear();
-		populateData(model);
 		return "redirect:/pizza";
 	}
 
@@ -131,8 +124,6 @@ public class MainController {
 		if (req.isUserInRole("ROLE_ADMIN")) {
 			ret = "admin";
 		}
-
-		populateData(model);
 		return ret;
 	}
 
@@ -142,7 +133,12 @@ public class MainController {
 			@ModelAttribute("orderData") OrderData orderData) {
 		orderPut(cart, orderData);
 
-		populateData(model);
+		MailSender mailSenderService = MailSender.getInstance();
+
+		mailSenderService.send("testforluigipizza@gmail.com",
+				orderData.getName(), "#1");
+
+		model.addAttribute("orderId", "#1");
 		return "thanks";
 	}
 
@@ -168,8 +164,6 @@ public class MainController {
 		} else {
 			getUserData(username, model);
 		}
-
-		populateData(model);
 		return ret;
 	}
 
@@ -181,9 +175,7 @@ public class MainController {
 				item.setDelivered(true);
 			}
 		}
-
 		filterDeliveredOrders(model);
-		populateData(model);
 		return "redirect:/admin";
 	}
 
@@ -203,8 +195,6 @@ public class MainController {
 		} else {
 			ret = "redirect:/pizza";
 		}
-
-		populateData(model);
 		return ret;
 	}
 
@@ -222,8 +212,6 @@ public class MainController {
 		} else {
 			ret = "redirect:/pizza";
 		}
-
-		populateData(model);
 		return ret;
 	}
 
@@ -242,7 +230,6 @@ public class MainController {
 				zipcode, phone, comment));
 
 		model.addAttribute("totalPrice", new DecimalFormat("##.##").format(sum));
-		populateData(model);
 		return "finalize";
 	}
 
@@ -255,8 +242,6 @@ public class MainController {
 		for (int i = 0; i < quantity; i++) {
 			cart.add(pizza);
 		}
-
-		populateData(model);
 		return "redirect:/pizza";
 	}
 
@@ -272,8 +257,6 @@ public class MainController {
 			msg.setMessage(text);
 			msgService.addRepository(msg);
 		}
-
-		populateData(model);
 		return "redirect:/message";
 	}
 
@@ -292,7 +275,6 @@ public class MainController {
 
 			model.addAttribute("newss", newsService.getRepository());
 		}
-		populateData(model);
 		return "redirect:/adminNews";
 	}
 
@@ -314,10 +296,6 @@ public class MainController {
 			pizza.setPrice(price);
 			pizza.setFile("resources/pizzapic/" + name + ".jpg");
 			pizzaService.addPizza(pizza);
-
-			populateData(model);
-		} else {
-
 		}
 		return "redirect:/adminNews";
 	}
@@ -340,12 +318,6 @@ public class MainController {
 		} catch (IOException ioex) {
 			//
 		}
-	}
-
-	private void populateData(Model model) {
-		model.addAttribute("messages", msgService.getRepository());
-		model.addAttribute("pizzas", pizzaService.getRepository());
-		model.addAttribute("news", newsService.getRepository());
 	}
 
 	private Pizza getPizza(final String pizzaName) {

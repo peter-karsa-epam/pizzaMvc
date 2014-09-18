@@ -35,16 +35,21 @@
 	</div>
 
 	<div class="main">
+		<div class="addProduct">
+			<h3>Add pizza to productlist</h3>
+			<form action="/smvc/addPizza" method="POST"
+				enctype="multipart/form-data">
+				Name: <br> <input type="text" name="name" /> <br>
+				Topping: <br> <input type="text" name="toppings" /> <br>
+				Price: <br> <input type="number" name="price" step="any" /> <br>
+				Picture: <br> <input type="file" name="image" /> <br> <input
+					type="submit" value="Add product">
+			</form>
+		</div>
 
-		<h3>Add pizza to productlist</h3>
-		<form action="/smvc/addPizza" method="POST"
-			enctype="multipart/form-data">
-			Name: <br> <input type="text" name="name" /> <br> Topping:
-			<br> <input type="text" name="toppings" /> <br> Price: <br>
-			<input type="number" name="price" step="any" /> <br> Picture: <br>
-			<input type="file" name="image" /> <br> <input type="submit"
-				value="Add product">
-		</form>
+		<div class="removeProduct">
+			<h3>Remove pizza from productlist</h3>
+		</div>
 
 		<br>
 		<hr>

@@ -47,6 +47,13 @@
 		</param-value>
 	</context-param>
 
+	<context-param>
+		<param-name>javaMailSender</param-name>
+		<param-value>
+			/WEB-INF/Spring-Mail.xml
+		</param-value>
+	</context-param>
+
 	<!-- Spring Security -->
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
