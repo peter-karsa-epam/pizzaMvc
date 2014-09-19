@@ -143,11 +143,10 @@ li {
 	float: left;
 	padding: 15px;
 	margin: 10px;
-	box-shadow: 2px 2px 2px #888888;
-	/* 	border-radius: 3px; */
-	/* 	border: 1px solid #ffa4a4; */
+	/* 	box-shadow: 2px 2px 2px #888888; */
+	border-bottom: 1px solid orange;
 	padding: 5px;
-	background-color: #fff2a8;
+	background-color: #fff2aa;
 	overflow: hidden;
 	min-width: 250px;
 }
@@ -210,8 +209,8 @@ button {
 	float: left;
 	padding: 10px;
 	margin: 10px;
-	border: 1px solid #ffff00;
-	background-color: #fff2a8;
+	border-bottom: 1px solid orange;
+	background-color: #fff2aa;
 }
 
 #loginUser {
@@ -227,7 +226,6 @@ button {
 .login {
 	font-size: 12px;
 	font-weight: bold;
-	color: #ffffff;
 	float: right;
 	position: absolute;
 	right: 20px;
@@ -308,7 +306,43 @@ table.orderListTable td {
 
 .registerForm {
 	float: left;
-	width: 350px;
-	border: 1px solid #ffff0f;
+	width: 400px;
+	background-color: #fff2aa;
+	border-bottom: 1px solid orange;
 	padding: 15px;
+}
+
+.addNewsForm {
+	float: left;
+	padding: 20px;
+	margin: 15px;
+	border-bottom: 1px solid orange;
+	background-color: #fff2aa;
+	min-width: 500px;
+}
+
+.addProduct {
+	float: left;
+	padding: 20px;
+	margin: 15px;
+	border-bottom: 1px solid orange;
+	background-color: #fff2aa;
+	min-width: 500px;
+}
+
+.removeProduct {
+	float: left;
+	padding: 20px;
+	margin: 15px;
+	border-bottom: 1px solid orange;
+	background-color: #fff2aa;
+	min-width: 1000px;
+}
+
+.orderedProd {
+	padding: 20px;
+	margin: 15px;
+	border-bottom: 1px solid orange;
+	background-color: #fff2aa;
+	width: 500px;
 }

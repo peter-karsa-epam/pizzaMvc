@@ -42,15 +42,6 @@ public class User implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	/*
-	 * public User(final String name, final String city, final String address,
-	 * final String zipcode, final String phone, final String email, final
-	 * String user, final String password, final boolean isAdmin, final int id)
-	 * { this.name = name; this.city = city; this.address = address;
-	 * this.zipcode = zipcode; this.phone = phone; this.email = email; this.user
-	 * = user; this.password = password; this.isAdmin = isAdmin; this.id = id; }
-	 */
-
 	public int getId() {
 		return id;
 	}

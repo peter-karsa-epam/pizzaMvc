@@ -20,7 +20,8 @@
 				<table>
 					<tr>
 						<td><a href="/smvc/admin" target="_self">Orders</a></td>
-						<td><a href="/smvc/adminNews" target="_self">New product items & news</a></td>
+						<td><a href="/smvc/adminNews" target="_self">New product
+								items & news</a></td>
 					</tr>
 				</table>
 			</div>
@@ -39,39 +40,40 @@
 		<h3>Order List</h3>
 		<br> <br>
 		<c:forEach var="orderItem" items="${orders}">
-			<h6>Ordered products:</h6>
-			<ul>
-				<c:forEach var="pizzaItem" items="${orderItem.pizzas}">
-					<li>${pizzaItem.name}</li>
-				</c:forEach>
-			</ul>
-			<b>Total price: £' ${orderItem.totalCost}</b>
-			<h5>Customer Information:</h5>
-			<div class="customerInfos">
-				Name:
-				<p>${orderItem.data.name}</p>
-				Address:
-				<p>${orderItem.data.address}</p>
-				City:
-				<p>${orderItem.data.city}</p>
-				ZIP-code:
-				<p>${orderItem.data.zipcode}</p>
-				Phone:
-				<p>${orderItem.data.phone}</p>
-				Comment:
-				<p>${orderItem.data.comment}</p>
-				Ordered:
-				<h6>${orderItem.date}</h6>
+			<div class="orderedProd">
+				<h6>Ordered products:</h6>
+				<ul>
+					<c:forEach var="pizzaItem" items="${orderItem.pizzas}">
+						<li>${pizzaItem.name}</li>
+					</c:forEach>
+				</ul>
+				<b>Total price: £' ${orderItem.totalCost}</b>
+				<h5>Customer Information:</h5>
+				<div class="customerInfos">
+					Name:
+					<p>${orderItem.data.name}</p>
+					Address:
+					<p>${orderItem.data.address}</p>
+					City:
+					<p>${orderItem.data.city}</p>
+					ZIP-code:
+					<p>${orderItem.data.zipcode}</p>
+					Phone:
+					<p>${orderItem.data.phone}</p>
+					Comment:
+					<p>${orderItem.data.comment}</p>
+					Ordered:
+					<h6>${orderItem.date}</h6>
+				</div>
+
+				<form name="setDelivered" method="post" action="setDelivered">
+					<input type="text" name="name" value="${orderItem.data.name}"
+						hidden="true"> <input type="text" name="date"
+						value="${orderItem.date}" hidden="true">
+					<button type="submit">Set Order Delivered</button>
+				</form>
+
 			</div>
-
-			<form name="setDelivered" method="post" action="setDelivered">
-				<input type="text" name="name" value="${orderItem.data.name}"
-					hidden="true"> <input type="text" name="date"
-					value="${orderItem.date}" hidden="true">
-				<button type="submit">Set Order Delivered</button>
-			</form>
-
-			<hr>
 		</c:forEach>
 
 	</div>

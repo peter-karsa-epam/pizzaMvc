@@ -51,17 +51,15 @@
 			<h3>Remove pizza from productlist</h3>
 		</div>
 
-		<br>
-		<hr>
-		<br>
-
-		<h3>Add news to homepage</h3>
-		<form action="/smvc/addNews" method="POST" id="addNewsForm">
-			Title: <br> <input type="text" name="newsTitle" /> <br>
-			Content: <br>
-			<textarea name="newsContent" form="addNewsForm" rows="4" cols="50"></textarea>
-			<br> <input type="submit" value="Add to news">
-		</form>
+		<div class="addNewsForm">
+			<h3>Add news to homepage</h3>
+			<form action="/smvc/addNews" method="POST" id="addNewsForm">
+				Title: <br> <input type="text" name="newsTitle" /> <br>
+				Content: <br>
+				<textarea name="newsContent" form="addNewsForm" rows="4" cols="50"></textarea>
+				<br> <input type="submit" value="Add to news">
+			</form>
+		</div>
 
 	</div>
 

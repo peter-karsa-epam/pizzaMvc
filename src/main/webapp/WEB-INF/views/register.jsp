@@ -40,7 +40,7 @@
 				Zipcode: <br> <input type="text" name="zipcode"> <br>
 				Phone: <br> <input type="tel" name="phone"> <br>
 				Email: <br> <input type="text" name="email"> <br>
-				Username (for login): <br> <input type="text" name="username">
+				Username (for login): <br> <input type="text" name="user">
 				<br> Password (for login): <br> <input id="pass"
 					type="password" name="password"> <span id="passstrength"></span><br>
 				<button type="submit">Register</button>
