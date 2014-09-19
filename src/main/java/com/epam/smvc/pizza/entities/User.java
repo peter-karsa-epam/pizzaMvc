@@ -2,25 +2,40 @@ package com.epam.smvc.pizza.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity
+@Entity(name = "User")
+@Table(name = "user")
 public class User implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7649039836173715669L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@Column(name = "name")
 	private String name;
+	@Column(name = "city")
 	private String city;
+	@Column(name = "address")
 	private String address;
+	@Column(name = "zipcode")
 	private String zipcode;
+	@Column(name = "phone")
 	private String phone;
+	@Column(name = "email")
 	private String email;
+	@Column(name = "user")
 	private String user;
+	@Column(name = "password")
 	private String password;
+	@Column(name = "isadmin")
 	private boolean isAdmin;
 
 	public User() {
@@ -36,8 +51,6 @@ public class User implements Serializable {
 	 * = user; this.password = password; this.isAdmin = isAdmin; this.id = id; }
 	 */
 
-	@Id
-	@GeneratedValue
 	public int getId() {
 		return id;
 	}
