@@ -151,6 +151,18 @@ li {
 	min-width: 250px;
 }
 
+.pizzaItemR {
+	float: left;
+	padding: 15px;
+	margin: 10px;
+	/* 	box-shadow: 2px 2px 2px #888888; */
+	border-bottom: 1px solid orange;
+	padding: 5px;
+	background-color: #fffad9;
+	overflow: hidden;
+	min-width: 250px;
+}
+
 .news {
 	margin: 15px;
 	/* 	border: 1px solid #ffa4a4; */
@@ -188,6 +200,10 @@ li {
 .firmDetails {
 	padding: 15px;
 	margin: 15px;
+}
+
+input {
+	
 }
 
 button {

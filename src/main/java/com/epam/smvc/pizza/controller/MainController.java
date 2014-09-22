@@ -53,15 +53,6 @@ public class MainController {
 	@Autowired
 	private OrderService orderService;
 
-	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
-	public String home(final Locale locale, final Model model) {
-		if (!model.containsAttribute("user")) {
-			model.addAttribute("user", "anonymous");
-		}
-		model.addAttribute("news", newsService.getRepository());
-		return "home";
-	}
-
 	@RequestMapping(value = "/pizza", method = RequestMethod.GET)
 	public String pizza(final Locale locale, final Model model) {
 		if (!model.containsAttribute("cart")) {
@@ -88,24 +79,12 @@ public class MainController {
 		return "home";
 	}
 
-	// @RequestMapping(value = "/admin", method = RequestMethod.GET)
-	// public String admin(final Locale locale, final Model model) {
-	// filterDeliveredOrders(model);
-	// return "admin";
-	// }
-
 	@RequestMapping(value = "/removeAllItems", method = RequestMethod.GET)
 	public String removeAllItems(final Locale locale, final Model model,
 			@ModelAttribute("cart") List<Pizza> cart) {
 		cart.clear();
 		return "redirect:/pizza";
 	}
-
-	// @RequestMapping(value = "/adminNews", method = RequestMethod.GET)
-	// public String adminNewsAndNewProducts(final Locale locale, final Model
-	// model) {
-	// return "adminNews";
-	// }
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(final Locale locale, final Model model,
@@ -166,18 +145,6 @@ public class MainController {
 			getUserData(username, model);
 		}
 		return ret;
-	}
-
-	@RequestMapping(value = "/setDelivered", method = RequestMethod.POST)
-	public String setItemDelivered(final Locale locale, final Model model,
-			final String name, final String date) {
-		for (Order item : orderService.getRepository()) {
-			if (date.equals(item.getDate().toString()) && name.equals(name)) {
-				item.setDelivered(true);
-			}
-		}
-		filterDeliveredOrders(model);
-		return "redirect:/admin";
 	}
 
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
@@ -335,21 +302,6 @@ public class MainController {
 		Order order = new Order(orderData, cart, new Date());
 		orderService.addOrder(order);
 		cart.clear();
-	}
-
-	private void filterDeliveredOrders(final Model model) {
-		List<Order> orders = new ArrayList<>();
-		orders.clear();
-		orders.addAll(orderService.getRepository());
-
-		for (int i = 0; i < orders.size(); i++) {
-			if (orders.get(i).isDelivered()) {
-				orders.remove(i);
-				i--;
-			}
-		}
-
-		model.addAttribute("orders", orders);
 	}
 
 	private void getUserData(final String username, final Model model) {

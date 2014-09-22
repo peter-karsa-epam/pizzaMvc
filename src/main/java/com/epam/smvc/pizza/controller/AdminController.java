@@ -37,6 +37,18 @@ public class AdminController {
 		return "adminNews";
 	}
 
+	@RequestMapping(value = "/setDelivered", method = RequestMethod.POST)
+	public String setItemDelivered(final Locale locale, final Model model,
+			final String name, final String date) {
+		for (Order item : orderService.getRepository()) {
+			if (date.equals(item.getDate().toString()) && name.equals(name)) {
+				item.setDelivered(true);
+			}
+		}
+		filterDeliveredOrders(model);
+		return "redirect:/admin";
+	}
+
 	private void filterDeliveredOrders(final Model model) {
 		List<Order> orders = new ArrayList<>();
 		orders.clear();

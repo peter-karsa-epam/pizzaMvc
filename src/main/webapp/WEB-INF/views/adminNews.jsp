@@ -10,10 +10,10 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".pizzaItem").mouseenter(function() {
+		$(".pizzaItemR").mouseenter(function() {
 			$("#" + this.id + " .hiddenPizza").show(500);
 		});
-		$(".pizzaItem").mouseleave(function() {
+		$(".pizzaItemR").mouseleave(function() {
 			$("#" + this.id + " .hiddenPizza").hide(500);
 		});
 	});
@@ -60,24 +60,23 @@
 		</div>
 
 		<div class="removeProduct">
-			<h3>Remove pizza from productlist</h3>
+			<h3>Remove or modify pizza from productlist</h3>
 
 			<c:forEach var="pizza" items="${pizzas}">
-				<div class="pizzaItem" id="${pizza.id}">
+				<div class="pizzaItemR" id="${pizza.id}">
 					<h4>${pizza.name}</h4>
 					<div class="hiddenPizza" id="${pizza.id}">
 						<img src="${pizza.file}" alt="pizza" height="140" width="180">
+
 						<form id="${pizza.id}" name="input" method="post"
 							action="modifyProduct">
-							Name: <br>
-							<input type="text" name="name" value="${pizza.name}"> <br>
-							Topping: <br>
-							<input type="text" name="topping" value="${pizza.topping}">
-							<br> Price: <br>
-							<input type="number" name="price" value="${pizza.price}"
-								step="any"><br>
+							Topping: <br> <input class="mod-pizza" type="text"
+								name="topping" value="${pizza.topping}" width="90%"> <br>
+							Price: <br> <input class="mod-pizza" type="number"
+								name="price" value="${pizza.price}" step="any"><br>
 							<button type="submit">Modify</button>
 						</form>
+
 						<form id="${pizza.id}" name="input" method="post"
 							action="removeProduct">
 							<input type="text" name="name" value="${pizza.name}"
