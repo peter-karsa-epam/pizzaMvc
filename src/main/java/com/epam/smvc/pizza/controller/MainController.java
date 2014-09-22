@@ -88,11 +88,11 @@ public class MainController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String admin(final Locale locale, final Model model) {
-		filterDeliveredOrders(model);
-		return "admin";
-	}
+	// @RequestMapping(value = "/admin", method = RequestMethod.GET)
+	// public String admin(final Locale locale, final Model model) {
+	// filterDeliveredOrders(model);
+	// return "admin";
+	// }
 
 	@RequestMapping(value = "/removeAllItems", method = RequestMethod.GET)
 	public String removeAllItems(final Locale locale, final Model model,
@@ -101,10 +101,11 @@ public class MainController {
 		return "redirect:/pizza";
 	}
 
-	@RequestMapping(value = "/adminNews", method = RequestMethod.GET)
-	public String adminNewsAndNewProducts(final Locale locale, final Model model) {
-		return "adminNews";
-	}
+	// @RequestMapping(value = "/adminNews", method = RequestMethod.GET)
+	// public String adminNewsAndNewProducts(final Locale locale, final Model
+	// model) {
+	// return "adminNews";
+	// }
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(final Locale locale, final Model model,

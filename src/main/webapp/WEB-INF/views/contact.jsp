@@ -46,7 +46,7 @@
 			<p>Tel.: +004401100101010111</p>
 			<p>
 				Email: <a href="mailto:pizza@luigi.co.uk" target="_top"
-					id="mailLink">pizza@luigi.co.uk</a>
+					id="mailLink">testpizzaforluigi@gmail.com</a>
 			</p>
 			<P>Open: every day from 10h-22h</P>
 			<p>Founded: 1999</p>

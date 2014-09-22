@@ -346,3 +346,7 @@ table.orderListTable td {
 	background-color: #fff2aa;
 	width: 500px;
 }
+
+.hiddenPizza {
+	display: none;
+}
