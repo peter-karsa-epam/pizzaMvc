@@ -2,8 +2,6 @@ package com.epam.smvc.pizza.controller;
 
 import java.util.Locale;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +14,9 @@ import com.epam.smvc.pizza.service.NewsService;
 @Controller
 @SessionAttributes({ "cart", "orderData", "user" })
 public class HomeController {
-	private static final Logger logger = LoggerFactory
-			.getLogger(MainController.class);
+	// private static final Logger logger = LoggerFactory
+	// .getLogger(MainController.class);
+
 	@Autowired
 	private NewsService newsService;
 

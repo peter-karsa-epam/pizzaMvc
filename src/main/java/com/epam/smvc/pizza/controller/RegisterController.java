@@ -2,8 +2,6 @@ package com.epam.smvc.pizza.controller;
 
 import java.util.Locale;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +12,8 @@ import com.epam.smvc.pizza.service.MailSender;
 
 @Controller
 public class RegisterController {
-	private static final Logger logger = LoggerFactory
-			.getLogger(RegisterController.class);
+	// private static final Logger logger = LoggerFactory
+	// .getLogger(RegisterController.class);
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(final Locale locale, final Model model) {
@@ -45,7 +43,7 @@ public class RegisterController {
 			newUser.setUser(user);
 			newUser.setPassword(password);
 			newUser.setAdmin(false);
-			
+
 			//
 			// persist user to db
 			//
