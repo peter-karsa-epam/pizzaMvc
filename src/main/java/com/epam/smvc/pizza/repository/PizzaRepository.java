@@ -1,7 +1,6 @@
 package com.epam.smvc.pizza.repository;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -12,7 +11,7 @@ import com.epam.smvc.pizza.domain.Pizza;
 public class PizzaRepository {
 	private List<Pizza> pizzas = new ArrayList<>();
 
-	//just for test
+	// just for test
 	public PizzaRepository() {
 		pizzas.add(new Pizza(1, "Margherita", 1.99, "Tomato sauce, cheese",
 				"resources/pizzapic/Margherita.jpg"));
@@ -30,7 +29,8 @@ public class PizzaRepository {
 	}
 
 	public List<Pizza> getPizzas() {
-		return Collections.unmodifiableList(pizzas);
+		// return Collections.unmodifiableList(pizzas);
+		return pizzas;
 	}
 
 	public void addPizzas(final Pizza pizza) {

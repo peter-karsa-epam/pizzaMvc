@@ -99,6 +99,33 @@ public class AdminController {
 		return "redirect:/admin";
 	}
 
+	@RequestMapping(value = "/modifyProduct", method = RequestMethod.POST)
+	public String modifyProductPost(final Locale locale, final Model model,
+			final String name, final String topping, final Double price) {
+
+		for (Pizza item : pizzaService.getRepository()) {
+			if (item.getName().equals(name)) {
+				item.setTopping(topping);
+				item.setPrice(price);
+			}
+		}
+
+		return "redirect:/adminNews";
+	}
+
+	@RequestMapping(value = "/removeProduct", method = RequestMethod.POST)
+	public String removeProductPost(final Locale locale, final Model model,
+			final String name) {
+		for (int i = 0; i < pizzaService.getRepository().size(); i++) {
+			if (name.equals(pizzaService.getRepository().get(i).getName())) {
+				pizzaService.getRepository().remove(i);
+				i--;
+			}
+		}
+
+		return "redirect:/adminNews";
+	}
+
 	private void filterDeliveredOrders(final Model model) {
 		List<Order> orders = new ArrayList<>();
 		orders.clear();

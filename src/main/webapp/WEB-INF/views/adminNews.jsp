@@ -70,10 +70,12 @@
 
 						<form id="${pizza.id}" name="input" method="post"
 							action="modifyProduct">
-							Topping: <br> <input class="mod-pizza" type="text"
-								name="topping" value="${pizza.topping}" width="90%"> <br>
-							Price: <br> <input class="mod-pizza" type="number"
-								name="price" value="${pizza.price}" step="any"><br>
+							<input type="text" name="name" value="${pizza.name}"
+								hidden="true" readonly="readonly"> Topping: <br> <input
+								class="mod-pizza" type="text" name="topping"
+								value="${pizza.topping}" width="90%"> <br> Price: <br>
+							<input class="mod-pizza" type="number" name="price"
+								value="${pizza.price}" step="any"><br>
 							<button type="submit">Modify</button>
 						</form>
 
